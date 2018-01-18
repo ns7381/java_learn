@@ -10,6 +10,7 @@
 
     <properties>
         <jetty.version>9.3.8.v20160314</jetty.version>
+        <jetty.rpm.dir>/opt/jetty-rpm</jetty.rpm.dir>
     </properties>
     <!-- Jetty9 -->
     <dependencies>
@@ -29,5 +30,47 @@
             <version>${jetty.version}</version>
         </dependency>
     </dependencies>
-
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>rpm-maven-plugin</artifactId>
+                <version>2.1.5</version>
+                <extensions>true</extensions>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>rpm</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <prefix>${jetty.rpm.dir}</prefix><!-- tomcat目录  -->
+                    <copyright>2018, Nathan</copyright>
+                    <distribution>Nathan</distribution>
+                    <group>nathan.com</group>
+                    <packager>nathan</packager>
+                    <version>${project.version}</version>
+                    <autoRequires>true</autoRequires>
+                    <release>1.el6</release>
+                    <requires>
+                        <require>java-1.7.0 >= 1.7</require>
+                    </requires>
+                    <mappings>
+                        <mapping>
+                            <directory>${jetty.rpm.dir}</directory><!-- web安装目录  -->
+                            <filemode>755</filemode>
+                            <username>root</username>
+                            <groupname>root</groupname>
+                            <sources>
+                                <source>
+                                    <location>target/${project.artifactId}-${project.version}</location>
+                                </source>
+                            </sources>
+                        </mapping>
+                    </mappings>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
