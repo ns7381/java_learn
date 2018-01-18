@@ -50,6 +50,7 @@
                     <distribution>Nathan</distribution>
                     <group>nathan.com</group>
                     <packager>nathan</packager>
+                    <sourceEncoding>UTF-8</sourceEncoding>
                     <version>${project.version}</version>
                     <autoRequires>true</autoRequires>
                     <release>1.el6</release>
@@ -64,7 +65,7 @@
                             <groupname>root</groupname>
                             <sources>
                                 <source>
-                                    <location>target/${project.artifactId}-${project.version}</location>
+                                    <location>target/${project.artifactId}-${project.version}.jar</location>
                                 </source>
                             </sources>
                         </mapping>
