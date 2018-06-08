@@ -17,6 +17,7 @@ public class AutoClassLoader extends ClassLoader{
     /*
         * 重写ClassLoader类的findClass方法，将一个字节数组转换为 Class 类的实例
         */
+    @Override
     public Class<?> findClass(String name) throws ClassNotFoundException {
         byte[] b = null;
         try {
