@@ -46,7 +46,6 @@
                 </executions>
                 <configuration>
                     <prefix>${jetty.rpm.dir}</prefix><!-- tomcat目录  -->
-                    <copyright>2018, Nathan</copyright>
                     <distribution>Nathan</distribution>
                     <group>nathan.com</group>
                     <packager>nathan</packager>
