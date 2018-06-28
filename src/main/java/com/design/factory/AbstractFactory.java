@@ -12,12 +12,7 @@ abstract class BenzCar{
         this.name = name;
     }
 }
-//具体产品（Bmw和Audi同理）
-class BenzSportCar extends BenzCar{
-    public void drive(){
-        System.out.println(this.getName()+"----BenzSportCar-----------------------");
-    }
-}
+//具体产品（Bmw和Audi同理
 class BenzBusinessCar extends BenzCar{
     public void drive(){
         System.out.println(this.getName()+"----BenzBusinessCar-----------------------");
@@ -34,11 +29,6 @@ abstract class BmwCar{
     }
     public void setName(String name) {
         this.name = name;
-    }
-}
-class BmwSportCar extends BmwCar{
-    public void drive(){
-        System.out.println(this.getName()+"----BmwSportCar-----------------------");
     }
 }
 class BmwBusinessCar extends BmwCar{
@@ -59,11 +49,6 @@ abstract class AudiCar{
         this.name = name;
     }
 }
-class AudiSportCar extends AudiCar{
-    public void drive(){
-        System.out.println(this.getName()+"----AudiSportCar-----------------------");
-    }
-}
 class AudiBusinessCar extends AudiCar{
     public void drive(){
         System.out.println(this.getName()+"----AudiBusinessCar-----------------------");
@@ -80,17 +65,6 @@ abstract class Driver3{
     public abstract AudiCar createAudiCar(String car) throws Exception;
 }
 //具体工厂
-class SportDriver extends Driver3{
-    public BenzCar createBenzCar(String car) throws Exception {
-        return new BenzSportCar();
-    }
-    public BmwCar createBmwCar(String car) throws Exception {
-        return new BmwSportCar();
-    }
-    public AudiCar createAudiCar(String car) throws Exception {
-        return new AudiSportCar();
-    }
-}
 class BusinessDriver extends Driver3{
     public BenzCar createBenzCar(String car) throws Exception {
         return new BenzBusinessCar();
