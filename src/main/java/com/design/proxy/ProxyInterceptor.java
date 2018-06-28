@@ -16,7 +16,7 @@ public class ProxyInterceptor implements MethodInterceptor {
     @Override
     public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
         System.out.println("start transaction");
-        Object result = method.invoke(target, objects);
+        Object result = methodProxy.invokeSuper(o, objects);
         System.out.println("end transaction");
         return result;
     }
