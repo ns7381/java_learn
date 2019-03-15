@@ -1,6 +1,5 @@
 package com.nathan.java.netty.nio;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.nio.ByteBuffer;
@@ -41,10 +40,10 @@ public class ChannelExample {
 
     private static void transferFile(String from, String to) throws IOException {
         RandomAccessFile fromFile = new RandomAccessFile(from, "rw");
-        FileChannel      fromChannel = fromFile.getChannel();
+        FileChannel fromChannel = fromFile.getChannel();
 
         RandomAccessFile toFile = new RandomAccessFile(to, "rw");
-        FileChannel      toChannel = toFile.getChannel();
+        FileChannel toChannel = toFile.getChannel();
 
         long position = 0;
         long count = fromChannel.size();

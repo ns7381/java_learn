@@ -1,65 +1,64 @@
 package com.nathan.java.netty.netty;
 
 import io.netty.bootstrap.Bootstrap;
-import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.EventLoopGroup;
+import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
-
-import java.net.InetSocketAddress;
+import io.netty.handler.ssl.SslContext;
+import io.netty.handler.ssl.SslContextBuilder;
+import io.netty.handler.ssl.util.InsecureTrustManagerFactory;
 
 /**
- * @author ningsheng
- * @version 1.0
- * @date 2019/3/10
+ * Sends one message when a connection is open and echoes back any received
+ * data to the server.  Simply put, the echo client initiates the ping-pong
+ * traffic between the echo client and server by sending the first message to
+ * the server.
  */
-public class EchoClient {
+public final class EchoClient {
 
-    private final String host;
-    private final int port;
+    static final boolean SSL = System.getProperty("ssl") != null;
+    static final String HOST = System.getProperty("host", "127.0.0.1");
+    static final int PORT = Integer.parseInt(System.getProperty("port", "8007"));
+    static final int SIZE = Integer.parseInt(System.getProperty("size", "256"));
 
-    public EchoClient(String host, int port) {
-        this.host = host;
-        this.port = port;
-    }
+    public static void main(String[] args) throws Exception {
+        // Configure SSL.git
+        final SslContext sslCtx;
+        if (SSL) {
+            sslCtx = SslContextBuilder.forClient()
+                    .trustManager(InsecureTrustManagerFactory.INSTANCE).build();
+        } else {
+            sslCtx = null;
+        }
 
-    public void start() throws Exception {
+        // Configure the client.
         EventLoopGroup group = new NioEventLoopGroup();
         try {
-            Bootstrap b = new Bootstrap();                //1
-            b.group(group)                                //2
-                    .channel(NioSocketChannel.class)            //3
-                    .remoteAddress(new InetSocketAddress(host, port))    //4
-                    .handler(new ChannelInitializer<SocketChannel>() {    //5
+            Bootstrap b = new Bootstrap();
+            b.group(group)
+                    .channel(NioSocketChannel.class)
+                    .option(ChannelOption.TCP_NODELAY, true)
+                    .handler(new ChannelInitializer<SocketChannel>() {
                         @Override
-                        public void initChannel(SocketChannel ch)
-                                throws Exception {
-                            ch.pipeline().addLast(
-                                    new EchoClientHandler());
+                        public void initChannel(SocketChannel ch) throws Exception {
+                            ChannelPipeline p = ch.pipeline();
+                            if (sslCtx != null) {
+                                p.addLast(sslCtx.newHandler(ch.alloc(), HOST, PORT));
+                            }
+                            //p.addLast(new LoggingHandler(LogLevel.INFO));
+                            p.addLast(new EchoClientHandler());
                         }
                     });
 
-            ChannelFuture f = b.connect().sync();        //6
+            // Start the client.
+            ChannelFuture f = b.connect(HOST, PORT).sync();
 
-            f.channel().closeFuture().sync();            //7
+            // Wait until the connection is closed.
+            f.channel().closeFuture().sync();
         } finally {
-            group.shutdownGracefully().sync();            //8
+            // Shut down the event loop to terminate all threads.
+            group.shutdownGracefully();
         }
-    }
-
-    public static void main(String[] args) throws Exception {
-        if (args.length != 2) {
-            System.err.println(
-                    "Usage: " + EchoClient.class.getSimpleName() +
-                            " <host> <port>");
-            return;
-        }
-
-        final String host = args[0];
-        final int port = Integer.parseInt(args[1]);
-
-        new EchoClient(host, port).start();
     }
 }
