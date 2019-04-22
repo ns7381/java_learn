@@ -1,34 +1,46 @@
 package com.nathan.java.netty.netty;
-
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.SimpleChannelInboundHandler;
-import io.netty.util.CharsetUtil;
+import io.netty.channel.ChannelInboundHandlerAdapter;
 
 /**
- * @author ningsheng
- * @version 1.0
- * @date 2019/3/10
+ * Handler implementation for the echo client.  It initiates the ping-pong
+ * traffic between the echo client and server by sending the first message to
+ * the server.
  */
-public class EchoClientHandler extends
-        SimpleChannelInboundHandler<ByteBuf> {
+public class EchoClientHandler extends ChannelInboundHandlerAdapter {
+
+    private final ByteBuf firstMessage;
+
+    /**
+     * Creates a client-side handler.
+     */
+    public EchoClientHandler() {
+        firstMessage = Unpooled.buffer(EchoClient.SIZE);
+        for (int i = 0; i < firstMessage.capacity(); i ++) {
+            firstMessage.writeByte((byte) i);
+        }
+    }
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
-        ctx.writeAndFlush(Unpooled.copiedBuffer("Netty rocks!", //2
-                CharsetUtil.UTF_8));
+        ctx.writeAndFlush(firstMessage);
     }
 
     @Override
-    public void channelRead0(ChannelHandlerContext ctx,
-                             ByteBuf in) {
-        System.out.println("Client received: " + in.toString(CharsetUtil.UTF_8));    //3
+    public void channelRead(ChannelHandlerContext ctx, Object msg) {
+        ctx.write(msg);
     }
 
     @Override
-    public void exceptionCaught(ChannelHandlerContext ctx,
-                                Throwable cause) {                    //4
+    public void channelReadComplete(ChannelHandlerContext ctx) {
+        ctx.flush();
+    }
+
+    @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
+        // Close the connection when an exception is raised.
         cause.printStackTrace();
         ctx.close();
     }
