@@ -1,11 +1,21 @@
 package com.test;
 
-import java.io.File;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.IOException;
 import java.nio.file.*;
-import java.util.List;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.Executors;
+import java.util.function.Consumer;
+
+import static java.nio.file.FileVisitResult.CONTINUE;
+import static java.nio.file.StandardWatchEventKinds.ENTRY_CREATE;
 
 public class InterviewQuestion {
+    private static final Logger LOGGER = LoggerFactory.getLogger(InterviewQuestion.class);
 
     /**
      * 牛顿迭代法实现求平方根
@@ -13,7 +23,7 @@ public class InterviewQuestion {
      * @param number 需要求解的数值
      * @return 数值的平方根
      */
-    public static int sqrt(int number) throws IllegalArgumentException{
+    public static int sqrt(int number) throws IllegalArgumentException {
         if (number < 0) {
             throw new IllegalArgumentException("求解数值必须大于等于0.");
         } else if (number == 0) {
@@ -32,6 +42,11 @@ public class InterviewQuestion {
         }
     }
 
+    /**
+     * copy file And watch file create event to dynamically copy file
+     * @param fromDirectory copy from dir
+     * @param toDirectory copy to dir
+     */
     public static void copyFileAndWatch(String fromDirectory, String toDirectory) {
         try {
             Path fromPath = Paths.get(fromDirectory);
@@ -39,37 +54,85 @@ public class InterviewQuestion {
             if (!Files.exists(toPath)) {
                 Files.createDirectory(toPath);
             }
-            Files.walk(fromPath, 4).filter(Files::isRegularFile)
-                    .forEach(img -> {
-                        try {
-                            int nameCount = img.getNameCount();
-                            Path year = img.getName(nameCount - 4);
-                            Path month = img.getName(nameCount - 3);
-                            Path day = img.getName(nameCount - 2);
-                            Path name = img.getName(nameCount - 1);
-                            String toFileName = String.format("%s_%s_%s_%s", year, month, day, name);
-                            Files.copy(img, Paths.get(toPath + File.separator + toFileName), StandardCopyOption.REPLACE_EXISTING);
-                        } catch (IOException e) {
-                            e.printStackTrace();
+            final Map<WatchKey, Path> keys = new HashMap<>();
+            WatchService watchService = FileSystems.getDefault().newWatchService();
+            Consumer<Path> register = p -> {
+                if (!Files.isDirectory(p)) {
+                    throw new RuntimeException("folder " + p + " does not exist or is not a directory");
+                }
+                try {
+                    Files.walkFileTree(p, new SimpleFileVisitor<Path>() {
+                        @Override
+                        public FileVisitResult preVisitDirectory(Path dir, BasicFileAttributes attrs) throws IOException {
+                            WatchKey watchKey = dir.register(watchService, ENTRY_CREATE);
+                            keys.put(watchKey, dir);
+                            return CONTINUE;
+                        }
+
+                        @Override
+                        public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) {
+                            copyFileToDirectory(file, toDirectory);
+                            return CONTINUE;
                         }
                     });
-            WatchService watchService = FileSystems.getDefault().newWatchService();
-            fromPath.register(watchService, StandardWatchEventKinds.ENTRY_CREATE);
-            while (true) {
-                // 阻塞方式，消费文件更改事件
-                List<WatchEvent<?>> watchEvents = watchService.take().pollEvents();
-                for (WatchEvent<?> watchEvent : watchEvents) {
-                    System.out.printf("[%s]文件发生了[%s]事件。%n", watchEvent.context(), watchEvent.kind());
+                } catch (IOException e) {
+                    throw new RuntimeException("Error registering path " + p);
                 }
-            }
+            };
+            register.accept(fromPath);
+            Executors.newSingleThreadExecutor().submit(() -> {
+                while (true) {
+                    final WatchKey key;
+                    try {
+                        key = watchService.take();
+                    } catch (InterruptedException ex) {
+                        return;
+                    }
+                    final Path dir = keys.get(key);
+                    if (dir == null) {
+                        System.err.println("WatchKey " + key + " not recognized!");
+                        continue;
+                    }
+                    key.pollEvents().forEach(watchEvent -> {
+                        Path path = (Path) watchEvent.context();
+                        final Path absPath = dir.resolve(path);
+                        if (Files.isDirectory(absPath)) {
+                            register.accept(absPath);
+                        } else {
+                            copyFileToDirectory(absPath, toDirectory);
+                        }
+                    });
+                    boolean valid = key.reset();
+                    if (!valid) {
+                        break;
+                    }
+                }
+            });
         } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+            LOGGER.error("IO error: ", e);
         }
     }
 
-    public static void main(String[] args) {
-        copyFileAndWatch("E:\\github\\java_learn\\src\\main\\java\\com\\test\\A", "E:\\github\\java_learn\\src\\main\\java\\com\\test\\B");
+    /**
+     * copy file to directory
+     * @param img image file
+     * @param toDirectory copy to file
+     */
+    private static void copyFileToDirectory(Path img, String toDirectory) {
+        try {
+            int nameCount = img.getNameCount();
+            if (nameCount < 4) {
+                return;
+            }
+            Path year = img.getName(nameCount - 4);
+            Path month = img.getName(nameCount - 3);
+            Path day = img.getName(nameCount - 2);
+            Path name = img.getName(nameCount - 1);
+            String toFileName = String.format("%s_%s_%s_%s", year, month, day, name);
+            Files.copy(img, Paths.get(toDirectory, toFileName), StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e) {
+            LOGGER.error("Image file copy error.", e);
+        }
     }
+
 }
