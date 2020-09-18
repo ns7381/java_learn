@@ -10,7 +10,7 @@ import java.util.List;
  */
 public class TableCreator {
     public static void main(String[] args) throws ClassNotFoundException {
-        args = new String[]{"com.nathan.test.annotation.Member"};
+        args = new String[]{"com.base.annotation.Member"};
         if (args.length < 1) {
             System.out.println("args: annotated classes");
             System.exit(0);

@@ -2,7 +2,7 @@ package com.concurent.thread;
 
 public class ThreadLocalExample {
 
-    public static class MyRunnable implements Runnable {
+    public class MyRunnable implements Runnable {
 
         private ThreadLocal<Integer> threadLocal =
                 new ThreadLocal<Integer>();
@@ -21,7 +21,8 @@ public class ThreadLocalExample {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        MyRunnable sharedRunnableInstance = new MyRunnable();
+        final ThreadLocalExample threadLocalExample = new ThreadLocalExample();
+        final MyRunnable sharedRunnableInstance = threadLocalExample.new MyRunnable();
 
         Thread thread1 = new Thread(sharedRunnableInstance);
         Thread thread2 = new Thread(sharedRunnableInstance);
