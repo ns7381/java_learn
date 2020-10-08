@@ -3,7 +3,7 @@ package com.datastructure.array;
 import java.util.PriorityQueue;
 
 /**
- * @author ningsheng
+ * @author nathan
  */
 public class InterviewQuestion {
 

@@ -12,12 +12,7 @@ interface Commnad {
 public class EnumMaps {
     public static void main(String[] args) {
         EnumMap<Language, Commnad> map = new EnumMap<>(Language.class);
-        map.put(Language.CN, new Commnad() {
-            @Override
-            public void action() {
-                System.out.println("cncncn");
-            }
-        });
+        map.put(Language.CN, () -> System.out.println("cncncn"));
         for (Map.Entry<Language, Commnad> entry : map.entrySet()) {
 
             System.out.println(entry.getKey());

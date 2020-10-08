@@ -1,53 +1,67 @@
 package com.datastructure.stack;
 
-public class MyStack {
-    private int[] array;
-    private int maxSize;
-    private int top;
+/**
+ * @author nathan
+ */
+public class MyStack<T> {
+    int size;
+    int top;
+    Object[] arr;
+
+    public MyStack() {
+        this(1 << 4);
+    }
 
     public MyStack(int size) {
-        this.maxSize = size;
-        array = new int[size];
-        top = -1;
-    }
-
-    //压入数据
-    public void push(int value) {
-        if (top < maxSize - 1) {
-            array[++top] = value;
+        if (size < 1) {
+            throw new RuntimeException("size must greater than 0");
         }
+        this.size = size;
+        this.top = -1;
+        this.arr = new Object[size];
     }
 
-    //弹出栈顶数据
-    public int pop() {
-        return array[top--];
-    }
-
-    //访问栈顶数据
-    public int peek() {
-        return array[top];
-    }
-
-    //判断栈是否为空
-    public boolean isEmpty() {
-        return (top == -1);
-    }
-
-    //判断栈是否满了
     public boolean isFull() {
-        return (top == maxSize - 1);
+        return size-1 == top;
+    }
+
+    public boolean isEmpty() {
+        return top == -1;
+    }
+
+    public boolean push(T data) {
+        if (isFull()) {
+            return false;
+        }
+        arr[++top] = data;
+        return true;
+    }
+
+    public T peek() {
+        if (isEmpty()) {
+            throw new RuntimeException("stack empty");
+        }
+        return (T)arr[top];
+    }
+
+    public T pop() {
+        if (isEmpty()) {
+            throw new RuntimeException("stack empty");
+        }
+        return (T)arr[top--];
     }
 
     public static void main(String[] args) {
-        MyStack stack = new MyStack(3);
-        stack.push(1);
-        stack.push(2);
-        stack.push(3);
-        System.out.println(stack.peek());
-        while (!stack.isEmpty()) {
-            System.out.println(stack.pop());
-        }
-
+        MyStack myStack = new MyStack();
+        myStack.push(0);
+        myStack.push(1);
+        myStack.push(2);
+        myStack.push(3);
+        myStack.push(4);
+        System.out.println(myStack.pop());
+        System.out.println(myStack.pop());
+        System.out.println(myStack.pop());
+        System.out.println(myStack.pop());
+        System.out.println(myStack.pop());
     }
-
 }

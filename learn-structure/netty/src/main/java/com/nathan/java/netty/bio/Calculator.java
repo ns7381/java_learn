@@ -1,7 +1,7 @@
 package com.nathan.java.netty.bio;
 
 /**
- * @author ningsheng
+ * @author nathan
  * @version 1.0
  * @date 2019/3/10
  */

@@ -1,7 +1,7 @@
 package com.base.inheritance;
 
 /**
- * @author ningsheng
+ * @author nathan
  * @version 1.0
  * @date 2018/1/12
  */

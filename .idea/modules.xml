@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/test.iml" filepath="$PROJECT_DIR$/.idea/modules/test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/test_main.iml" filepath="$PROJECT_DIR$/.idea/modules/test_main.iml" group="test" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/test_test.iml" filepath="$PROJECT_DIR$/.idea/modules/test_test.iml" group="test" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/java_learn.iml" filepath="$PROJECT_DIR$/.idea/modules/java_learn.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/java_learn.main.iml" filepath="$PROJECT_DIR$/.idea/modules/java_learn.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/java_learn.test.iml" filepath="$PROJECT_DIR$/.idea/modules/java_learn.test.iml" />
     </modules>
   </component>
 </project>
