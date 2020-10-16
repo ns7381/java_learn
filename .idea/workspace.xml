@@ -60,164 +60,28 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d0401c0e-2b7d-4dea-afe6-08fdba7b6105" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_jackson_core_jackson_annotations_2_7_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_jackson_core_jackson_core_2_7_8.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_fasterxml_jackson_core_jackson_databind_2_7_8.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__commons_io_commons_io_2_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__io_lettuce_lettuce_core_6_0_0_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__io_netty_netty_buffer_4_1_52_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__io_netty_netty_codec_4_1_52_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__io_netty_netty_common_4_1_52_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__io_netty_netty_handler_4_1_52_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__io_netty_netty_resolver_4_1_52_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__io_netty_netty_transport_4_1_52_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__io_projectreactor_reactor_core_3_3_10_RELEASE.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_apache_commons_commons_lang3_3_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_projectlombok_lombok_1_18_12.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_reactivestreams_reactive_streams_1_0_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_slf4j_slf4j_api_1_7_21.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/java_learn.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/java_learn.main.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules/java_learn.test.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/algorithm/recursive/EightQueen.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/algorithm/recursive/Maze.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/algorithm/search/BinarySearch.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/algorithm/search/FibonacciSearch.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/algorithm/search/InsertValueSearch.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/algorithm/search/LinearSearch.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/algorithm/sort/BucketSort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/algorithm/sort/MergeSort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/algorithm/sort/RadixSort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/algorithm/sort/insertion/InsertionSort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/algorithm/sort/insertion/ShellSort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/algorithm/sort/selection/HeapSort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/algorithm/sort/selection/SelectionSort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/algorithm/sort/swap/BubbleSort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/algorithm/sort/swap/QuickSort.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/base/inner/OutClassTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datastructure/array/SparseArray.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datastructure/link/OneWayCycleLink.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datastructure/link/OneWayLink.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datastructure/link/TwoWayLink.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datastructure/map/MyHashMap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datastructure/queue/MyCircularQueue.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datastructure/stack/Calculator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datastructure/tree/AVLTree.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datastructure/tree/ArrayBinaryTree.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datastructure/tree/BinaryTree.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datastructure/tree/HuffmanCode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datastructure/tree/HuffmanTree.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/datastructure/tree/ThreadedBinaryTree.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/design/behavioral/chain/ChainOfResponsibilityPattern.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/design/behavioral/command/CommandPattern.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/design/behavioral/command/Example.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/design/behavioral/interpreter/InterpreterPatternDemo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/design/behavioral/iterator/IteratorPattern.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/design/behavioral/mediator/MediatorPattern.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/design/behavioral/memento/Example.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/design/behavioral/memento/MementoPattern.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/design/behavioral/observer/ObserverPattern.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/design/behavioral/state/StatePattern.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/design/behavioral/strategy/StrategyPattern.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/design/behavioral/template/Example.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/design/behavioral/template/JDBCTemplate.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/design/behavioral/template/StudentDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/design/behavioral/template/TemplateMethod.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/design/behavioral/visitor/VistorPattern.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/design/creation/builder/BankAccount.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/design/creation/factory/AbstractFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/design/creation/factory/FactoryMethod.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/design/creation/factory/SimplyFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/design/creation/singleton/EagerSingleton.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/design/creation/singleton/StaticInnerClassSingleton.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/design/structural/adapter/ClassAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/design/structural/bridge/Bridge.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/design/structural/composite/CompositePattern.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/design/structural/facade/FacadePattern.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/design/structural/flyweight/FlyweightPattern.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/io/EncodeLearn.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/io/NIOLearn.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/io/SystemPathLearn.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/io/encode.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__asm_asm_3_3_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__asm_asm_3_3_1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__cglib_cglib_2_2_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__cglib_cglib_2_2_2.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__junit_junit_4_11.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__junit_junit_4_11.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_core_1_3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_hamcrest_hamcrest_core_1_3.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/test.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/test_main.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/test_test.iml" beforeDir="false" />
+    <list default="true" id="d0401c0e-2b7d-4dea-afe6-08fdba7b6105" name="Default" comment="design">
+      <change afterPath="$PROJECT_DIR$/learn-structure/thrift-learn/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/learn-structure/thrift-learn/src/main/gen-java/com/nathan/thrift/HelloWordService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/learn-structure/thrift-learn/src/main/gen-java/com/nathan/thrift/Request.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/learn-structure/thrift-learn/src/main/gen-java/com/nathan/thrift/RequestException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/learn-structure/thrift-learn/src/main/gen-java/com/nathan/thrift/RequestType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/learn-structure/thrift-learn/src/main/java/com/nathan/thrift/bio/HelloWordClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/learn-structure/thrift-learn/src/main/java/com/nathan/thrift/bio/HelloWordServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/learn-structure/thrift-learn/src/main/java/com/nathan/thrift/bio/HelloWordThreadPoolServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/learn-structure/thrift-learn/src/main/java/com/nathan/thrift/nio/HelloWordHsHaServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/learn-structure/thrift-learn/src/main/java/com/nathan/thrift/nio/HelloWordNonBlockingServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/learn-structure/thrift-learn/src/main/java/com/nathan/thrift/nio/HelloWordTFramedClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/learn-structure/thrift-learn/src/main/java/com/nathan/thrift/nio/HelloWordThreadedSelectorServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/datastructure/graph/Graph.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/learn-structure/netty/src/main/java/com/nathan/java/netty/bio/Calculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/learn-structure/netty/src/main/java/com/nathan/java/netty/bio/Calculator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/learn-structure/netty/src/main/java/com/nathan/java/netty/bio/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/learn-structure/netty/src/main/java/com/nathan/java/netty/bio/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/learn-structure/netty/src/main/java/com/nathan/java/netty/bio/SocketHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/learn-structure/netty/src/main/java/com/nathan/java/netty/bio/SocketHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/learn-structure/netty/src/main/java/com/nathan/java/netty/nio/ChannelExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/learn-structure/netty/src/main/java/com/nathan/java/netty/nio/ChannelExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/learn-structure/netty/src/main/java/com/nathan/java/netty/nio/SelectorExample.java" beforeDir="false" afterPath="$PROJECT_DIR$/learn-structure/netty/src/main/java/com/nathan/java/netty/nio/SelectorExample.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/base/enumerated/EnumMaps.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/base/enumerated/EnumMaps.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/base/exception/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/base/exception/Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/base/inheritance/Child.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/base/inheritance/Child.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/base/inheritance/Parent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/base/inheritance/Parent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/base/inner/Outer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/base/inner/Outer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/datastructure/array/InterviewQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datastructure/array/InterviewQuestion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/datastructure/sort/BubbleSort.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/datastructure/sort/ChoiceSort.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/datastructure/sort/InsertSort.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/datastructure/stack/ArrayStack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datastructure/stack/ArrayStack.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/datastructure/stack/MyStack.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datastructure/stack/MyStack.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/datastructure/tree/BSTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/datastructure/tree/BinarySearchTree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/design/DynamicProxy.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/design/RealSubject.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/design/Solution.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/design/Subject.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/design/adapter/Adaptee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/design/structural/adapter/Adaptee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/design/adapter/Adapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/design/structural/adapter/Adapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/design/adapter/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/design/structural/adapter/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/design/adapter/Target.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/design/structural/adapter/Target.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/design/decorator/Component.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/design/structural/decorator/Component.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/design/decorator/ConcreteComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/design/structural/decorator/ConcreteComponent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/design/decorator/ConcreteDecorator1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/design/structural/decorator/ConcreteDecorator1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/design/decorator/ConcreteDecorator2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/design/structural/decorator/ConcreteDecorator2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/design/decorator/Decorator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/design/structural/decorator/Decorator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/design/decorator/DecoratorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/design/structural/decorator/DecoratorTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/design/factory/AbstractFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/design/factory/FactoryMethon.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/design/factory/SimplyFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/design/prototype/deep/Company.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/design/creation/prototype/deep/Company.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/design/prototype/deep/DeepBusinessCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/design/creation/prototype/deep/DeepBusinessCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/design/prototype/deep/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/design/creation/prototype/deep/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/design/prototype/serializable/PrototypeSerializableTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/design/creation/prototype/serializable/PrototypeSerializableTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/design/prototype/serializable/SerializableBusinessCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/design/creation/prototype/serializable/SerializableBusinessCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/design/prototype/shallow/BusinessCard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/design/creation/prototype/shallow/BusinessCard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/design/prototype/shallow/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/design/creation/prototype/shallow/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/design/proxy/DbQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/design/structural/proxy/DbQuery.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/design/proxy/DbQueryStaticProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/design/structural/proxy/DbQueryStaticProxy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/design/proxy/IDbQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/design/structural/proxy/IDbQuery.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/design/proxy/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/design/structural/proxy/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/design/proxy/ProxyHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/design/structural/proxy/ProxyHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/design/proxy/ProxyInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/design/structural/proxy/ProxyInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/design/proxy/custom/CustomProxyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/design/structural/proxy/custom/CustomProxyTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/design/proxy/custom/MyClassLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/design/structural/proxy/custom/MyClassLoader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/design/proxy/custom/MyInvocationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/design/structural/proxy/custom/MyInvocationHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/design/proxy/custom/MyProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/design/structural/proxy/custom/MyProxy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/design/singleton/EnumSingleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/design/creation/singleton/EnumSingleton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/design/singleton/MySingleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/design/creation/singleton/MySingleton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/design/singleton/SerSingleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/design/creation/singleton/SerSingleton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/design/singleton/SerSingletonTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/design/creation/singleton/SerSingletonTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/design/singleton/Singleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/design/creation/singleton/DCLSingleton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/design/template/JDBCTemplate.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/design/template/StatementCallback.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/design/behavioral/template/StatementCallback.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/design/template/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/design/behavioral/template/Student.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/design/template/StudentDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/io/IOLearn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/io/StandardIOLearn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/learn-structure/thrift-learn/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/learn-structure/thrift-learn/src/main/java/com/nathan/thrift/HelloWordClient.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/learn-structure/thrift-learn/src/main/java/com/nathan/thrift/HelloWordServer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/learn-structure/thrift-learn/src/main/java/com/nathan/thrift/HelloWordServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/learn-structure/thrift-learn/src/main/java/com/nathan/thrift/HelloWordServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/design/behavioral/memento/Example.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/design/observer/ObserverTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/design/strategy/Client.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -316,7 +180,7 @@
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -626,8 +490,24 @@
       <workItem from="1514468380954" duration="3861000" />
       <workItem from="1601568065128" duration="10546000" />
       <workItem from="1601628338107" duration="89510000" />
-      <workItem from="1601917364806" duration="77484000" />
+      <workItem from="1601917364806" duration="78967000" />
+      <workItem from="1602211516810" duration="832000" />
+      <workItem from="1602214707722" duration="14000" />
+      <workItem from="1602214733961" duration="52000" />
+      <workItem from="1602214801185" duration="43000" />
+      <workItem from="1602749305276" duration="722000" />
+      <workItem from="1602765106496" duration="175000" />
+      <workItem from="1602765306460" duration="586000" />
+      <workItem from="1602765965022" duration="656000" />
     </task>
+    <task id="LOCAL-00001" summary="design">
+      <created>1602164861278</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1602164861278</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -653,6 +533,10 @@
       <collection />
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="design" />
+    <option name="LAST_COMMIT_MESSAGE" value="design" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="560" y="304" key="#Big_Data_Tools_Connections" timestamp="1601899249065">
       <screen x="0" y="23" width="1792" height="1097" />
@@ -662,10 +546,10 @@
       <screen x="0" y="23" width="1792" height="1097" />
     </state>
     <state x="505" y="256" key="#Gradle/0.23.1792.1097@0.23.1792.1097" timestamp="1601568165450" />
-    <state x="530" y="257" key="#Inspections" timestamp="1601720200123">
+    <state x="530" y="257" key="#Inspections" timestamp="1602164929828">
       <screen x="0" y="23" width="1792" height="1097" />
     </state>
-    <state x="530" y="257" key="#Inspections/0.23.1792.1097@0.23.1792.1097" timestamp="1601720200123" />
+    <state x="530" y="257" key="#Inspections/0.23.1792.1097@0.23.1792.1097" timestamp="1602164929828" />
     <state x="360" y="233" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1601787165623">
       <screen x="0" y="23" width="1792" height="1097" />
     </state>
@@ -686,46 +570,46 @@
       <screen x="0" y="23" width="1792" height="1097" />
     </state>
     <state width="488" height="466" key="DebuggerActiveHint/0.23.1792.1097@0.23.1792.1097" timestamp="1602067292847" />
-    <state width="1750" height="461" key="GridCell.Tab.0.bottom" timestamp="1602164566998">
+    <state width="1750" height="519" key="GridCell.Tab.0.bottom" timestamp="1602207638336">
       <screen x="0" y="23" width="1792" height="1097" />
     </state>
-    <state width="1750" height="461" key="GridCell.Tab.0.bottom/0.23.1792.1097@0.23.1792.1097" timestamp="1602164566998" />
-    <state width="1750" height="461" key="GridCell.Tab.0.center" timestamp="1602164566998">
+    <state width="1750" height="519" key="GridCell.Tab.0.bottom/0.23.1792.1097@0.23.1792.1097" timestamp="1602207638336" />
+    <state width="1750" height="519" key="GridCell.Tab.0.center" timestamp="1602207638335">
       <screen x="0" y="23" width="1792" height="1097" />
     </state>
-    <state width="1750" height="461" key="GridCell.Tab.0.center/0.23.1792.1097@0.23.1792.1097" timestamp="1602164566998" />
-    <state width="1750" height="461" key="GridCell.Tab.0.left" timestamp="1602164566998">
+    <state width="1750" height="519" key="GridCell.Tab.0.center/0.23.1792.1097@0.23.1792.1097" timestamp="1602207638335" />
+    <state width="1750" height="519" key="GridCell.Tab.0.left" timestamp="1602207638335">
       <screen x="0" y="23" width="1792" height="1097" />
     </state>
-    <state width="1750" height="461" key="GridCell.Tab.0.left/0.23.1792.1097@0.23.1792.1097" timestamp="1602164566998" />
-    <state width="1750" height="461" key="GridCell.Tab.0.right" timestamp="1602164566998">
+    <state width="1750" height="519" key="GridCell.Tab.0.left/0.23.1792.1097@0.23.1792.1097" timestamp="1602207638335" />
+    <state width="1750" height="519" key="GridCell.Tab.0.right" timestamp="1602207638336">
       <screen x="0" y="23" width="1792" height="1097" />
     </state>
-    <state width="1750" height="461" key="GridCell.Tab.0.right/0.23.1792.1097@0.23.1792.1097" timestamp="1602164566998" />
-    <state width="1750" height="519" key="GridCell.Tab.1.bottom" timestamp="1602092543754">
+    <state width="1750" height="519" key="GridCell.Tab.0.right/0.23.1792.1097@0.23.1792.1097" timestamp="1602207638336" />
+    <state width="1750" height="519" key="GridCell.Tab.1.bottom" timestamp="1602207638337">
       <screen x="0" y="23" width="1792" height="1097" />
     </state>
-    <state width="1750" height="519" key="GridCell.Tab.1.bottom/0.23.1792.1097@0.23.1792.1097" timestamp="1602092543754" />
-    <state width="1750" height="519" key="GridCell.Tab.1.center" timestamp="1602092543754">
+    <state width="1750" height="519" key="GridCell.Tab.1.bottom/0.23.1792.1097@0.23.1792.1097" timestamp="1602207638337" />
+    <state width="1750" height="519" key="GridCell.Tab.1.center" timestamp="1602207638336">
       <screen x="0" y="23" width="1792" height="1097" />
     </state>
-    <state width="1750" height="519" key="GridCell.Tab.1.center/0.23.1792.1097@0.23.1792.1097" timestamp="1602092543754" />
-    <state width="1750" height="519" key="GridCell.Tab.1.left" timestamp="1602092543754">
+    <state width="1750" height="519" key="GridCell.Tab.1.center/0.23.1792.1097@0.23.1792.1097" timestamp="1602207638336" />
+    <state width="1750" height="519" key="GridCell.Tab.1.left" timestamp="1602207638336">
       <screen x="0" y="23" width="1792" height="1097" />
     </state>
-    <state width="1750" height="519" key="GridCell.Tab.1.left/0.23.1792.1097@0.23.1792.1097" timestamp="1602092543754" />
-    <state width="1750" height="519" key="GridCell.Tab.1.right" timestamp="1602092543754">
+    <state width="1750" height="519" key="GridCell.Tab.1.left/0.23.1792.1097@0.23.1792.1097" timestamp="1602207638336" />
+    <state width="1750" height="519" key="GridCell.Tab.1.right" timestamp="1602207638337">
       <screen x="0" y="23" width="1792" height="1097" />
     </state>
-    <state width="1750" height="519" key="GridCell.Tab.1.right/0.23.1792.1097@0.23.1792.1097" timestamp="1602092543754" />
+    <state width="1750" height="519" key="GridCell.Tab.1.right/0.23.1792.1097@0.23.1792.1097" timestamp="1602207638337" />
     <state x="474" y="313" key="IDE.errors.dialog" timestamp="1602086152581">
       <screen x="0" y="23" width="1792" height="1097" />
     </state>
     <state x="474" y="313" key="IDE.errors.dialog/0.23.1792.1097@0.23.1792.1097" timestamp="1602086152581" />
-    <state x="397" y="210" key="SettingsEditor" timestamp="1602162835946">
+    <state x="397" y="210" key="SettingsEditor" timestamp="1602213431656">
       <screen x="0" y="23" width="1792" height="1097" />
     </state>
-    <state x="397" y="210" key="SettingsEditor/0.23.1792.1097@0.23.1792.1097" timestamp="1602162835946" />
+    <state x="397" y="210" key="SettingsEditor/0.23.1792.1097@0.23.1792.1097" timestamp="1602213431656" />
     <state x="626" y="310" width="549" height="524" key="StructurePopup" timestamp="1602089613567">
       <screen x="0" y="23" width="1792" height="1097" />
     </state>
@@ -734,6 +618,10 @@
       <screen x="0" y="23" width="1792" height="1097" />
     </state>
     <state width="500" height="507" key="SwitcherDM/0.23.1792.1097@0.23.1792.1097" timestamp="1602161693960" />
+    <state x="496" y="311" key="Vcs.Push.Dialog.v2" timestamp="1602164879408">
+      <screen x="0" y="23" width="1792" height="1097" />
+    </state>
+    <state x="496" y="311" key="Vcs.Push.Dialog.v2/0.23.1792.1097@0.23.1792.1097" timestamp="1602164879408" />
     <state x="683" y="356" key="chooseDestDirectoryDialog" timestamp="1601883843581">
       <screen x="0" y="23" width="1792" height="1097" />
     </state>
@@ -742,6 +630,10 @@
       <screen x="0" y="23" width="1792" height="1097" />
     </state>
     <state x="100" y="123" width="1592" height="897" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1792.1097@0.23.1792.1097" timestamp="1602159715867" />
+    <state x="694" y="492" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1602749312094">
+      <screen x="0" y="23" width="1792" height="1097" />
+    </state>
+    <state x="694" y="492" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1792.1097@0.23.1792.1097" timestamp="1602749312094" />
     <state x="597" y="160" width="598" height="822" key="find.popup" timestamp="1602164714220">
       <screen x="0" y="23" width="1792" height="1097" />
     </state>
