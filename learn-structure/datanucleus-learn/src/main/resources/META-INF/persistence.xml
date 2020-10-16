@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+        http://xmlns.jcp.org/xml/ns/persistence/persistence_2_0.xsd" version="2.0">
+
+    <!-- JDO tutorial "unit" -->
+    <persistence-unit name="Tutorial">
+        <class>com.ns.learn.jdo.model.Inventory</class>
+        <class>com.ns.learn.jdo.model.Product</class>
+        <class>com.ns.learn.jdo.model.Book</class>
+        <exclude-unlisted-classes/>
+        <properties>
+            <property name="javax.jdo.option.ConnectionURL"
+                      value="jdbc:mysql://localhost:3306/jdotest?useSSL=false"/>
+            <property name="javax.jdo.option.ConnectionUserName" value="root"/>
+            <property name="javax.jdo.option.ConnectionPassword" value="root"/>
+            <property name="javax.jdo.PersistenceManagerFactoryClass"
+                      value="org.datanucleus.api.jdo.JDOPersistenceManagerFactory"/>
+            <property name="datanucleus.schema.autoCreateAll" value="true"/>
+            <property name="javax.jdo.option.ConnectionDriverName" value="com.mysql.jdbc.Driver"/>
+        </properties>
+    </persistence-unit>
+
+</persistence>
