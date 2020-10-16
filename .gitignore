@@ -23,7 +23,7 @@ cobertura.ser
 *.ipr
 *.iml
 *.iws
-
+*/.idea
 # temp ignore
 logs/
 *.log
