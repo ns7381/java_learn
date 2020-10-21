@@ -33,7 +33,6 @@ public class LoaderTest {
         System.out.println(obj instanceof com.jvm.LoaderTest);
 
 
-
         try {
             System.out.println(ClassLoader.getSystemClassLoader());
             System.out.println(ClassLoader.getSystemClassLoader().getParent());

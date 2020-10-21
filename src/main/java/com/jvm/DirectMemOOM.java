@@ -2,8 +2,6 @@ package com.jvm;
 
 //import sun.misc.Unsafe;
 
-import java.lang.reflect.Field;
-
 /**
  * Created by nathan on 18/1/3.
  */

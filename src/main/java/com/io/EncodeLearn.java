@@ -9,7 +9,7 @@ import java.util.Arrays;
  * @author nathan
  */
 public class EncodeLearn {
-    public static void test() throws Exception{
+    public static void test() throws Exception {
         /**
          * 1. char 和 String 在内存中保存都使用Java内码，也即UTF-16
          * 2. char 在class文件中使用UTF-16表示
