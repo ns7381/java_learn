@@ -7,7 +7,9 @@ data/
 *.zip
 *.tar
 *.tar.gz
-
+*/target
+*/build
+build
 # maven plugin ignore
 release.properties
 cobertura.ser
