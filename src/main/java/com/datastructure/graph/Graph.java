@@ -3,30 +3,33 @@ package com.datastructure.graph;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.List;
 
-class Graph {
+/**
+ * 邻接矩阵实现图
+ */
+class Graph<T> {
+    // 存储顶点集合
+    private final List<T> vertexList;
+    // 存储图对应的邻结矩阵
+    private final int[][] edges;
+    // 表示边的数目
+    private int numOfEdges;
 
-    private ArrayList<String> vertexList; // 存储顶点集合
-    private int[][] edges; // 存储图对应的邻结矩阵
-    private int numOfEdges; // 表示边的数目
-
-    // 构造器
     public Graph(int n) {
         // 初始化矩阵和vertexList
         edges = new int[n][n];
-        vertexList = new ArrayList<String>(n);
+        vertexList = new ArrayList<T>(n);
         numOfEdges = 0;
-
     }
 
     // 插入结点
-    public void insertVertex(String vertex) {
+    public void insertVertex(T vertex) {
         vertexList.add(vertex);
     }
 
-    // 添加边
     /**
-     *
+     * 添加边
      * @param v1     第二个顶点对应的下标
      * @param v2     第二个顶点对应的下标
      * @param weight 表示权值，0：不连接；1：连接
@@ -37,7 +40,6 @@ class Graph {
         numOfEdges++;
     }
 
-    // 图中常用的方法
     // 返回结点的个数
     public int getNumOfVertex() {
         return vertexList.size();
@@ -49,7 +51,7 @@ class Graph {
     }
 
     // 返回结点i(下标)对应的数据 0->"A" 1->"B" 2->"C"
-    public String getValueByIndex(int i) {
+    public T getValueByIndex(int i) {
         return vertexList.get(i);
     }
 
@@ -65,9 +67,8 @@ class Graph {
         }
     }
 
-    // 得到第一个邻接结点的下标 w
     /**
-     *
+     * 得到第一个邻接结点的下标 w
      * @param index
      * @return 如果存在就返回对应的下标，否则返回-1
      */
@@ -91,7 +92,6 @@ class Graph {
     }
 
     // 深度优先遍历算法
-    // i 第一次就是 0
     private void dfs(boolean[] isVisited, int i) {
         // 首先我们访问该结点,输出
         System.out.print(getValueByIndex(i) + "->");
@@ -167,13 +167,13 @@ class Graph {
     public static void main(String[] args) {
 
         // 测试一把图是否创建ok
-        String Vertexs[] = {"1", "2", "3", "4", "5", "6", "7", "8"};
-        int n = Vertexs.length; // 结点的个数
+        String[] vertexes = {"1", "2", "3", "4", "5", "6", "7", "8"};
+        int n = vertexes.length; // 结点的个数
 
         // 创建图对象
-        Graph graph = new Graph(n);
+        Graph<String> graph = new Graph<>(n);
         // 循环的添加顶点
-        for (String vertex : Vertexs) {
+        for (String vertex : vertexes) {
             graph.insertVertex(vertex);
         }
 

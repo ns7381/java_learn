@@ -24,6 +24,7 @@ class Person extends Thread{
         setName(name);
         this.semaphore = semaphore;
     }
+    @Override
     public void run(){
         System.out.println(getName()+" is waiting");
         try{

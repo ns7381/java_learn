@@ -17,8 +17,9 @@ public class AtomicIntegerTest {
         for(int i=0;i<10;i++){
             new Thread(){
                 public void run() {
-                    for(int j=0;j<1000;j++)
+                    for(int j=0;j<1000;j++) {
                         test.increase();
+                    }
                 }
             }.start();
         }

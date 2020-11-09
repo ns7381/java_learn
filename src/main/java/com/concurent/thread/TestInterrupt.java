@@ -17,6 +17,7 @@ public class TestInterrupt {
 class MyThread extends Thread {
     boolean flag = true;
 
+    @Override
     public void run() {
         while (flag) {
             System.out.println("===" + new Date() + "===");

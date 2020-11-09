@@ -7,14 +7,6 @@ import java.util.*;
  */
 public class GreedyAlgorithm {
 
-    public void broadcastProblem(Map<String, HashSet<String>> broadcasts, Set<String> allAreas) {
-        ArrayList<String> selects = new ArrayList<String>();
-        while (allAreas.size() > 0) {
-
-        }
-    }
-
-
     public static void main(String[] args) {
         // 创建广播电台,放入到Map
         HashMap<String, HashSet<String>> broadcasts = new HashMap<String, HashSet<String>>();
@@ -54,5 +46,39 @@ public class GreedyAlgorithm {
         for (Map.Entry<String, HashSet<String>> broadcast : broadcasts.entrySet()) {
             allAreas.addAll(broadcast.getValue());
         }
+
+        // keyList用于存储符合要求的电台
+        ArrayList<String> keyList = new ArrayList<>();
+        // key用于存储每一轮遍历与areaList交集最多的电台
+        String key = null;
+        // 用于临时存储电台覆盖的城市
+        Set<String> temp = new HashSet<>();
+        // 结束条件是allAreas没有任何数据，即说明每个城市都被覆盖了
+        while (!allAreas.isEmpty()) {
+            // 遍历broadcasts
+            for (String broadcastKey : broadcasts.keySet()) {
+                temp.clear(); // 一定要清空，temp是临时存储的变量
+                // 将当前电台覆盖的城市添加到临时存储的变量中
+                temp.addAll(broadcasts.get(broadcastKey));
+                // temp集合与areaList集合取交集，交集结果赋值给temp
+                temp.retainAll(allAreas);
+                // 判断temp的大小是否大于0，以及key值是否为空，
+                // 如果不为空就判断本轮的交集大小是否大于上一次存储的key值对应的电台覆盖的城市，大于就重新赋值新的最优的结果(贪心算法核心部分)
+                if (temp.size() > 0 && (key == null || temp.size() > broadcasts.get(key).size())) {
+                    key = broadcastKey;
+                }
+            }
+            // 一轮遍历完之后，判断key是否为空，不为空，就将key存入到keyList集合中，表示符合要求的电台
+            // 最后将符合要求的电台所覆盖的城市，从areaList集合中移除掉，说明这些城市已被覆盖
+            if (key != null) {
+                keyList.add(key);
+                allAreas.removeAll(broadcasts.get(key));
+                key = null;
+            }
+        }
+
+        // 输出结果
+        System.out.println(keyList.toString());
+
     }
 }

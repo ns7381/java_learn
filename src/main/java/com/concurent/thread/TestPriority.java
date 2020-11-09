@@ -11,6 +11,7 @@ public class TestPriority {
 }
 
 class T1 implements Runnable {
+	@Override
 	public void run() {
 		for(int i=0; i<1000; i++) {
 			System.out.println("T1: " + i);
@@ -19,6 +20,7 @@ class T1 implements Runnable {
 }
 
 class T2 implements Runnable {
+	@Override
 	public void run() {
 		for(int i=0; i<1000; i++) {
 			System.out.println("------T2: " + i);

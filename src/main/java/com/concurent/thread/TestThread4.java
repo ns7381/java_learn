@@ -6,8 +6,9 @@ public class TestThread4 {
         Thread t = new Thread(r);
         t.start();
         for (int i = 0; i < 100000; i++) {
-            if (i % 10000 == 0 & i > 0)
+            if (i % 10000 == 0 & i > 0) {
                 System.out.println("in thread main i=" + i);
+            }
         }
         System.out.println("Thread main is over");
         r.shutDown();

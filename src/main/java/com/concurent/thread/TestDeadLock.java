@@ -4,6 +4,7 @@ public class TestDeadLock implements Runnable {
     public int flag = 1;
     static Object o1 = new Object(), o2 = new Object();
 
+    @Override
     public void run() {
         System.out.println("flag=" + flag);
         if (flag == 1) {

@@ -4,8 +4,7 @@ public class ThreadLocalExample {
 
     public class MyRunnable implements Runnable {
 
-        private ThreadLocal<Integer> threadLocal =
-                new ThreadLocal<Integer>();
+        private ThreadLocal<Integer> threadLocal = new ThreadLocal<Integer>();
 
         @Override
         public void run() {
