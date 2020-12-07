@@ -1,4 +1,4 @@
-package com.concurent.tools;
+package com.concurent.executor;
 
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by ning on 2015/10/12.
  */
-public class SemaphoreDemo {
+public class ForkJoinDemo2 {
     public static void main(String[] args) {
         // 线程数量：停车位! 限流！
         Semaphore semaphore = new Semaphore(3);

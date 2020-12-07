@@ -1,4 +1,4 @@
-package com.nathan.java.netty.netty;
+package com.nathan.learn.netty.echo;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;

@@ -1,4 +1,4 @@
-package com.nathan.java.netty.netty;
+package com.nathan.learn.netty.echo;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;

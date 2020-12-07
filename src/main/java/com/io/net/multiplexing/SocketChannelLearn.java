@@ -24,7 +24,7 @@ public class SocketChannelLearn {
     /* 发送数据缓冲区大小 */
     private ByteBuffer sendBuffer = ByteBuffer.allocate(BLOCK_SIZE);
     /* 服务器端地址 */
-    private final static InetSocketAddress SERVER_ADDRESS = new InetSocketAddress("localhost", 10110);
+    private final static InetSocketAddress SERVER_ADDRESS = new InetSocketAddress("localhost", 9090);
 
     /**
      * 多路复用器

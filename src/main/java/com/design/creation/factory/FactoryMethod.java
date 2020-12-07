@@ -12,55 +12,51 @@ package com.design.creation.factory;
 public class FactoryMethod {
     public static void main(String[] args) throws Exception {
         Driver2 d = new BenzDriver2();
-        Car2 c = d.createCar("benz");
-        c.setName("benz");
+        Car2 c = d.createCar();
         c.drive();
     }
 }
 
 abstract class Car2 {
-    private String name;
+    String name;
 
     public abstract void drive();
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 }
 
 class Benz2 extends Car2 {
+    String name = "benz";
+
     @Override
     public void drive() {
-        System.out.println(this.getName() + "----go-----------------------");
+        System.out.println(this.name + "----go-----------------------");
     }
 }
 
 class Bmw2 extends Car2 {
+    String name = "bmw";
+
     @Override
     public void drive() {
-        System.out.println(this.getName() + "----go-----------------------");
+        System.out.println(this.name + "----go-----------------------");
     }
 }
 
 
 abstract class Driver2 {
-    public abstract Car2 createCar(String car) throws Exception;
+    public abstract Car2 createCar() throws Exception;
 }
 
 class BenzDriver2 extends Driver2 {
     @Override
-    public Car2 createCar(String car) throws Exception {
+    public Car2 createCar() throws Exception {
         return new Benz2();
     }
 }
 
 class BmwDriver2 extends Driver2 {
     @Override
-    public Car2 createCar(String car) throws Exception {
+    public Car2 createCar() throws Exception {
         return new Bmw2();
     }
 }
