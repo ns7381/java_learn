@@ -1,0 +1,7 @@
+.idea
+*.iml
+**/*.iml
+target
+logs
+**/target
+**/*/target
