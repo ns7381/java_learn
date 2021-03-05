@@ -6,9 +6,9 @@
 
     <!-- JDO tutorial "unit" -->
     <persistence-unit name="Tutorial">
-        <class>com.ns.learn.jdo.model.Inventory</class>
-        <class>com.ns.learn.jdo.model.Product</class>
-        <class>com.ns.learn.jdo.model.Book</class>
+        <class>com.nathan.learn.jdo.model.Inventory</class>
+        <class>com.nathan.learn.jdo.model.Product</class>
+        <class>com.nathan.learn.jdo.model.Book</class>
         <exclude-unlisted-classes/>
         <properties>
             <property name="javax.jdo.option.ConnectionURL"

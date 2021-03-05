@@ -29,76 +29,76 @@ import java.util.List;
  * 不过需要将 RelNode 转换成自己实现的 RelNode，才能实现注入（比如CSVTableScan）
  */
 public class CustomOptimizeTest2 {
-    public static void main(String[] args) {
-        String sql = "select * from TEST_CSV.TEST01 where TEST01.NAME1='hello'";
+  public static void main(String[] args) {
+    String sql = "select * from TEST_CSV.TEST01 where TEST01.NAME1='hello'";
 
-        String filePath = "/model.json";
-        Connection connection = null;
-        try {
-            connection = CalciteUtil.getConnect(filePath);
-            RelRoot root = ParseAndValidateTest.genRelRoot(connection, sql);
-            System.out.println("----------------- before optimizer ------------------");
-            System.out.println(RelOptUtil.toString(root.rel, SqlExplainLevel.ALL_ATTRIBUTES));
+    String filePath = "/model.json";
+    Connection connection = null;
+    try {
+      connection = CalciteUtil.getConnect(filePath);
+      RelRoot root = ParseAndValidateTest.genRelRoot(connection, sql);
+      System.out.println("----------------- before optimizer ------------------");
+      System.out.println(RelOptUtil.toString(root.rel, SqlExplainLevel.ALL_ATTRIBUTES));
 
-            DefaultRelMetadataProvider defaultRelMetadataProvider = new DefaultRelMetadataProvider();
-            defaultRelMetadataProvider.getMetadataProvider();
-            RelNode rel = hepPlan(root.rel, false, defaultRelMetadataProvider.getMetadataProvider(), null, null, CSVTableScanConverter.INSTANCE);
+      DefaultRelMetadataProvider defaultRelMetadataProvider = new DefaultRelMetadataProvider();
+      defaultRelMetadataProvider.getMetadataProvider();
+      RelNode rel = hepPlan(root.rel, false, defaultRelMetadataProvider.getMetadataProvider(), null, null, CSVTableScanConverter.INSTANCE);
 
-            System.out.println("----------------- after optimizer ------------------");
-            /**
-             * 这里修改了 TableScan 到 Filter 的 rowcount 的计算逻辑，
-             * 详见 {@link CSVRelMdRowCount#getRowCount(Filter rel, RelMetadataQuery mq) }
-             * */
-            System.out.println(RelOptUtil.toString(rel, SqlExplainLevel.ALL_ATTRIBUTES));
+      System.out.println("----------------- after optimizer ------------------");
+      /**
+       * 这里修改了 TableScan 到 Filter 的 rowcount 的计算逻辑，
+       * 详见 {@link CSVRelMdRowCount#getRowCount(Filter rel, RelMetadataQuery mq) }
+       * */
+      System.out.println(RelOptUtil.toString(rel, SqlExplainLevel.ALL_ATTRIBUTES));
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
+    } catch (Exception e) {
+      e.printStackTrace();
+    } finally {
+      try {
+        connection.close();
+      } catch (SQLException e) {
+        e.printStackTrace();
+      }
+    }
+  }
+
+
+  /**
+   * Run the HEP Planner with the given rule set.
+   */
+  public static RelNode hepPlan(RelNode basePlan, boolean followPlanChanges,
+                                RelMetadataProvider mdProvider, RelOptPlanner.Executor executorProvider, HepMatchOrder order,
+                                RelOptRule... rules) {
+
+    RelNode optimizedRelNode = basePlan;
+    HepProgramBuilder programBuilder = new HepProgramBuilder();
+    if (followPlanChanges) {
+      programBuilder.addMatchOrder(order);
+      programBuilder = programBuilder.addRuleCollection(ImmutableList.copyOf(rules));
+    } else {
+      // TODO: Should this be also TOP_DOWN?
+      for (RelOptRule r : rules) {
+        programBuilder.addRuleInstance(r);
+      }
     }
 
+    // Create planner and copy context
+    HepPlanner planner = new HepPlanner(programBuilder.build(),
+        basePlan.getCluster().getPlanner().getContext());
 
-    /**
-     * Run the HEP Planner with the given rule set.
-     */
-    public static RelNode hepPlan(RelNode basePlan, boolean followPlanChanges,
-                                  RelMetadataProvider mdProvider, RelOptPlanner.Executor executorProvider, HepMatchOrder order,
-                                  RelOptRule... rules) {
+    List<RelMetadataProvider> list = Lists.newArrayList();
+    list.add(mdProvider);
+    planner.registerMetadataProviders(list);
+    RelMetadataProvider chainedProvider = ChainedRelMetadataProvider.of(list);
+    basePlan.getCluster().setMetadataProvider(
+        new CachingRelMetadataProvider(chainedProvider, planner));
 
-        RelNode optimizedRelNode = basePlan;
-        HepProgramBuilder programBuilder = new HepProgramBuilder();
-        if (followPlanChanges) {
-            programBuilder.addMatchOrder(order);
-            programBuilder = programBuilder.addRuleCollection(ImmutableList.copyOf(rules));
-        } else {
-            // TODO: Should this be also TOP_DOWN?
-            for (RelOptRule r : rules) {
-                programBuilder.addRuleInstance(r);
-            }
-        }
-
-        // Create planner and copy context
-        HepPlanner planner = new HepPlanner(programBuilder.build(),
-                basePlan.getCluster().getPlanner().getContext());
-
-        List<RelMetadataProvider> list = Lists.newArrayList();
-        list.add(mdProvider);
-        planner.registerMetadataProviders(list);
-        RelMetadataProvider chainedProvider = ChainedRelMetadataProvider.of(list);
-        basePlan.getCluster().setMetadataProvider(
-                new CachingRelMetadataProvider(chainedProvider, planner));
-
-        if (executorProvider != null) {
-            basePlan.getCluster().getPlanner().setExecutor(executorProvider);
-        }
-        planner.setRoot(basePlan);
-        optimizedRelNode = planner.findBestExp();
-
-        return optimizedRelNode;
+    if (executorProvider != null) {
+      basePlan.getCluster().getPlanner().setExecutor(executorProvider);
     }
+    planner.setRoot(basePlan);
+    optimizedRelNode = planner.findBestExp();
+
+    return optimizedRelNode;
+  }
 }

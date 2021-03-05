@@ -15,10 +15,10 @@ public class OutClassTest {
     public class InnerClass {
         void InnerClass() {
             System.out.println("InnerClass!");
-            System.out.println(out1);
+            System.out.println(OutClassTest.this.out1);
             System.out.println(out2);
             out();
-            outstatic();//静态内部类只能够访问外部类的静态成员
+            outstatic();
         }
 
         // static void inner(){}  static int i=1; 非静态内部类不能有静态成员（方法、属性）
@@ -27,7 +27,8 @@ public class OutClassTest {
     public static class InnerstaticClass {
         void InnerstaticClass() {
             System.out.println("InnerstaticClass");
-//              System.out.println(out1);out(); 静态内部类只能够访问外部类的静态成员
+//            OutClassTest.this.out1;
+//              System.out.println(out1);静态内部类只能够访问外部类的静态成员
             System.out.println(out2);
             outstatic();
         }

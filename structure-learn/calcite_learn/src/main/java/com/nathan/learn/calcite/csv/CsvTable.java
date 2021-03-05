@@ -14,57 +14,54 @@ import org.apache.calcite.util.Pair;
 import org.apache.calcite.util.Source;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
 
 public class CsvTable extends AbstractTable implements ScannableTable {
-    private Source source;
+  private Source source;
 
-    public CsvTable(Source source) {
-        this.source = source;
-    }
+  public CsvTable(Source source) {
+    this.source = source;
+  }
 
-    /**
-     * 获取字段类型
-     */
-    @Override
-    public RelDataType getRowType(RelDataTypeFactory relDataTypeFactory) {
-        RelDataTypeFactory typeFactory = relDataTypeFactory;
+  /**
+   * 获取字段类型
+   */
+  @Override
+  public RelDataType getRowType(RelDataTypeFactory relDataTypeFactory) {
+    RelDataTypeFactory typeFactory = relDataTypeFactory;
 
 //        JavaTypeFactory typeFactory = (JavaTypeFactory)relDataTypeFactory;
 
-        List<String> names = Lists.newLinkedList();
-        List<RelDataType> types = Lists.newLinkedList();
+    List<String> names = Lists.newLinkedList();
+    List<RelDataType> types = Lists.newLinkedList();
 
-        try {
-            BufferedReader reader = new BufferedReader(new FileReader(source.file()));
-            String line = reader.readLine();
-            List<String> lines = Lists.newArrayList(line.split(","));
-            lines.forEach(column -> {
-                String name = column.split(":")[0];
-                String type = column.split(":")[1];
-                names.add(name);
-                types.add(typeFactory.createSqlType(SqlTypeName.get(type)));
-            });
+    try {
+      BufferedReader reader = new BufferedReader(new FileReader(source.file()));
+      String line = reader.readLine();
+      List<String> lines = Lists.newArrayList(line.split(","));
+      lines.forEach(column -> {
+        String name = column.split(":")[0];
+        String type = column.split(":")[1];
+        names.add(name);
+        types.add(typeFactory.createSqlType(SqlTypeName.get(type)));
+      });
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return typeFactory.createStructType(Pair.zip(names, types));
+    } catch (IOException e) {
+      e.printStackTrace();
     }
 
-    @Override
-    public Enumerable<Object[]> scan(DataContext dataContext) {
-        return new AbstractEnumerable<Object[]>() {
-            @Override
-            public Enumerator<Object[]> enumerator() {
-                return new CsvEnumerator<>(source);
-            }
-        };
-    }
+    return typeFactory.createStructType(Pair.zip(names, types));
+  }
+
+  @Override
+  public Enumerable<Object[]> scan(DataContext dataContext) {
+    return new AbstractEnumerable<Object[]>() {
+      @Override
+      public Enumerator<Object[]> enumerator() {
+        return new CsvEnumerator<>(source);
+      }
+    };
+  }
 }

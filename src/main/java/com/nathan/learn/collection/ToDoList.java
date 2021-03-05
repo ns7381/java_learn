@@ -43,7 +43,7 @@ public class ToDoList extends PriorityQueue<ToDoList.ToDoItem> {
     }
 
     public void add(String td, char pri, int sec) {
-        super.add(new ToDoItem(pri, sec, td));
+//        super.add(new ToDoItem(pri, sec, td));
     }
 
     public static void main(String[] args) {

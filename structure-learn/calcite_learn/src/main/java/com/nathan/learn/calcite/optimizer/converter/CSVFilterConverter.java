@@ -13,37 +13,37 @@ import org.apache.calcite.rel.logical.LogicalFilter;
 
 public class CSVFilterConverter extends ConverterRule {
 
-    public static final CSVFilterConverter INSTANCE = new CSVFilterConverter(
-            LogicalFilter.class,
-            Convention.NONE,
-            CSVRel.CONVENTION,
-            "CSVFilterConverter"
+  public static final CSVFilterConverter INSTANCE = new CSVFilterConverter(
+      LogicalFilter.class,
+      Convention.NONE,
+      CSVRel.CONVENTION,
+      "CSVFilterConverter"
+  );
+
+  public CSVFilterConverter(Class<? extends RelNode> clazz, RelTrait in, RelTrait out, String description) {
+    super(clazz, in, out, description);
+  }
+
+  /**
+   * RelOptRuleCall 是专门用来被RelOptRule调用的，包含一个 RelNode 的集合 （Set）。
+   *
+   * @param call
+   * @return
+   */
+  @Override
+  public boolean matches(RelOptRuleCall call) {
+    return super.matches(call);
+  }
+
+  @Override
+  public RelNode convert(RelNode rel) {
+    LogicalFilter filter = (LogicalFilter) rel;
+    RelNode input = convert(filter.getInput(), filter.getInput().getTraitSet().replace(CSVRel.CONVENTION).simplify());
+    return new CSVFilter(
+        filter.getCluster(),
+        RelTraitSet.createEmpty().plus(CSVRel.CONVENTION).plus(RelDistributionTraitDef.INSTANCE.getDefault()),
+        input,
+        filter.getCondition()
     );
-
-    public CSVFilterConverter(Class<? extends RelNode> clazz, RelTrait in, RelTrait out, String description) {
-        super(clazz, in, out, description);
-    }
-
-    /**
-     * RelOptRuleCall 是专门用来被RelOptRule调用的，包含一个 RelNode 的集合 （Set）。
-     *
-     * @param call
-     * @return
-     */
-    @Override
-    public boolean matches(RelOptRuleCall call) {
-        return super.matches(call);
-    }
-
-    @Override
-    public RelNode convert(RelNode rel) {
-        LogicalFilter filter = (LogicalFilter) rel;
-        RelNode input = convert(filter.getInput(), filter.getInput().getTraitSet().replace(CSVRel.CONVENTION).simplify());
-        return new CSVFilter(
-                filter.getCluster(),
-                RelTraitSet.createEmpty().plus(CSVRel.CONVENTION).plus(RelDistributionTraitDef.INSTANCE.getDefault()),
-                input,
-                filter.getCondition()
-        );
-    }
+  }
 }

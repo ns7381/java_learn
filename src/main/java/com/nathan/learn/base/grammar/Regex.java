@@ -12,5 +12,9 @@ public class Regex {
         if (matcher.find()) {
             System.out.println("group 2: " + matcher.group(2));
         }
+
+        if ("drop_functions".matches(".*function.*")) {
+            System.out.println("true");
+        }
     }
 }

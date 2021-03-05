@@ -6,14 +6,14 @@ import org.apache.calcite.rel.metadata.RelMetadataProvider;
 
 public class DefaultRelMetadataProvider {
 
-    public RelMetadataProvider getMetadataProvider() {
-        // Return MD provider
-        return ChainedRelMetadataProvider.of(ImmutableList
-                .of(
-                        CSVRelMdRowCount.SOURCE,
-                        CSVRelMdDistinctRowCount.SOURCE,
-                        org.apache.calcite.rel.metadata.DefaultRelMetadataProvider.INSTANCE
-                )
-        );
-    }
+  public RelMetadataProvider getMetadataProvider() {
+    // Return MD provider
+    return ChainedRelMetadataProvider.of(ImmutableList
+        .of(
+            CSVRelMdRowCount.SOURCE,
+            CSVRelMdDistinctRowCount.SOURCE,
+            org.apache.calcite.rel.metadata.DefaultRelMetadataProvider.INSTANCE
+        )
+    );
+  }
 }

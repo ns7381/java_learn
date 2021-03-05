@@ -13,27 +13,27 @@ import org.apache.calcite.rel.logical.LogicalTableScan;
 
 public class CSVTableScanConverter extends ConverterRule {
 
-    public static final CSVTableScanConverter INSTANCE = new CSVTableScanConverter(
-            LogicalTableScan.class,
-            Convention.NONE,
-            CSVRel.CONVENTION,
-            "CSVTableScan"
-    );
+  public static final CSVTableScanConverter INSTANCE = new CSVTableScanConverter(
+      LogicalTableScan.class,
+      Convention.NONE,
+      CSVRel.CONVENTION,
+      "CSVTableScan"
+  );
 
-    @Override
-    public boolean matches(RelOptRuleCall call) {
-        return super.matches(call);
-    }
+  @Override
+  public boolean matches(RelOptRuleCall call) {
+    return super.matches(call);
+  }
 
-    public CSVTableScanConverter(Class<? extends RelNode> clazz, RelTrait in, RelTrait out, String description) {
-        super(clazz, in, out, description);
-    }
+  public CSVTableScanConverter(Class<? extends RelNode> clazz, RelTrait in, RelTrait out, String description) {
+    super(clazz, in, out, description);
+  }
 
-    @Override
-    public RelNode convert(RelNode rel) {
-        LogicalTableScan tableScan = (LogicalTableScan) rel;
-        return new CSVTableScan(tableScan.getCluster(),
-                RelTraitSet.createEmpty().plus(CSVRel.CONVENTION).plus(RelDistributionTraitDef.INSTANCE.getDefault()),
-                tableScan.getTable());
-    }
+  @Override
+  public RelNode convert(RelNode rel) {
+    LogicalTableScan tableScan = (LogicalTableScan) rel;
+    return new CSVTableScan(tableScan.getCluster(),
+        RelTraitSet.createEmpty().plus(CSVRel.CONVENTION).plus(RelDistributionTraitDef.INSTANCE.getDefault()),
+        tableScan.getTable());
+  }
 }
