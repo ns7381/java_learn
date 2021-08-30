@@ -7,6 +7,9 @@ public class StaticTest {
     public static void main(String[] args) {
 //        staticFunction();
         StaticTest st = new StaticTest();
+        System.out.println(b);
+        StaticTest st2 = new StaticTest();
+        System.out.println(b);
     }
 
 //    static StaticTest st = new StaticTest();

@@ -1,18 +1,20 @@
 package com.nathan.learn.jdo.model;
 
 
-import javax.jdo.annotations.PersistenceCapable;
-
-@PersistenceCapable
-public class Book extends Product {
+public class Book {
+    long id;
+    long updateTime;
     String author = null;
     String isbn = null;
     String publisher = null;
 
-    public Book(String name, String desc, double price, String author, String isbn, String publisher) {
-        super(name, desc, price);
+    public Book(String author, String isbn, String publisher) {
         this.author = author;
         this.isbn = isbn;
         this.publisher = publisher;
+    }
+
+    public long getId() {
+        return id;
     }
 }

@@ -18,7 +18,7 @@
         <module>structure-learn/metrics-learn</module>
         <module>structure-learn/mybatis-learn</module>
         <module>structure-learn/mybatis-plus-learn</module>
-        <module>structure-learn/netty-learn</module>
+<!--        <module>structure-learn/netty-learn</module>-->
         <module>structure-learn/spi-learn</module>
         <module>structure-learn/spring-learn</module>
         <module>structure-learn/thrift-learn</module>
@@ -26,6 +26,10 @@
         <module>structure-learn/compiler-learn</module>
         <module>structure-learn/cache-learn</module>
         <module>structure-learn/statemachine_learn</module>
+        <module>structure-learn/antlr-learn/antlr3-learn</module>
+        <module>structure-learn/antlr-learn/antlr4-learn</module>
+        <module>structure-learn/antlr-learn/hivesql-learn</module>
+        <module>structure-learn/log4j2-learn</module>
     </modules>
 
     <dependencies>
@@ -117,6 +121,19 @@
                     <source>8</source>
                     <target>8</target>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.scala-tools</groupId>
+                <artifactId>maven-scala-plugin</artifactId>
+                <version>2.15.2</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                            <goal>testCompile</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

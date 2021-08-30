@@ -6,6 +6,8 @@ public class Main {
         staticProxy.select();
         IDbQuery jdkProxy = (IDbQuery) new ProxyHandler(new DbQuery()).getProxyInstance();
         jdkProxy.select();
+        IDbQuery jdkProxy2= (IDbQuery) new ProxyHandler(jdkProxy).getProxyInstance();
+        jdkProxy.select();
         IDbQuery cglibProxy = (IDbQuery) new ProxyInterceptor(new DbQuery()).getProxyInstance();
         cglibProxy.select();
     }

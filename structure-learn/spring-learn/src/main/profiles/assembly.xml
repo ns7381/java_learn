@@ -11,7 +11,7 @@
             <directoryMode>0777</directoryMode>
             <includes>
                 <include>**/*</include>
-            </includes>TransactionAutoConfiguration
+            </includes>
             <fileMode>0777</fileMode>
             <lineEnding>unix</lineEnding>
         </fileSet>

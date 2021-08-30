@@ -13,7 +13,7 @@ public class OutClassTest {
     }
 
     public class InnerClass {
-        void InnerClass() {
+        InnerClass() {
             System.out.println("InnerClass!");
             System.out.println(OutClassTest.this.out1);
             System.out.println(out2);
@@ -25,7 +25,7 @@ public class OutClassTest {
     }
 
     public static class InnerstaticClass {
-        void InnerstaticClass() {
+        InnerstaticClass() {
             System.out.println("InnerstaticClass");
 //            OutClassTest.this.out1;
 //              System.out.println(out1);静态内部类只能够访问外部类的静态成员
@@ -45,6 +45,20 @@ public class OutClassTest {
         OutClassTest.InnerstaticClass b = new OutClassTest.InnerstaticClass();
         //创建非静态内部类
         OutClassTest.InnerClass c = a.new InnerClass();
+        OutTest outTest = new OutTest();
+        outTest.outTest();
     }
 }
+
+class OutTest {
+    public String test;
+    OutTest() {
+        test = "test";
+    }
+
+    void outTest() {
+
+    }
+}
+
 

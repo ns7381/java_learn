@@ -28,4 +28,8 @@ public class Parent {
     private void testB() {
         System.out.println("Parent testB.");
     }
+
+    public static void testC() {
+        System.out.println("Parent testA.");
+    }
 }

@@ -12,7 +12,7 @@ public class CyclicBarrierDemo {
          * 集齐7颗龙珠召唤神龙
          */
         // 召唤龙珠的线程
-        CyclicBarrier cyclicBarrier = new CyclicBarrier(8, () -> {
+        CyclicBarrier cyclicBarrier = new CyclicBarrier(7, () -> {
             System.out.println("召唤神龙成功！");
         });
 
@@ -23,6 +23,8 @@ public class CyclicBarrierDemo {
                 System.out.println(Thread.currentThread().getName() + "收集" + temp + "个龙珠");
                 try {
                     cyclicBarrier.await(); // 等待
+                    System.out.println(Thread.currentThread().getName() + "xxx" + temp + "个龙珠");
+
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } catch (BrokenBarrierException e) {

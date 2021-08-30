@@ -1,0 +1,31 @@
+{
+  "version": "1.0",
+  "defaultSchema": "SALES",
+  "schemas": [
+    {
+      "name": "SALES",
+      "type": "custom",
+      "factory": "org.apache.calcite.adapter.csv.CsvSchemaFactory",
+      "operand": {
+        "directory": "sales",
+        "flavor": "TRANSLATABLE"
+      },
+      "tables": [
+        {
+          "name": "FEMALE_EMPS",
+          "type": "view",
+          "sql": "SELECT * FROM emps WHERE gender = 'F'"
+        },
+        {
+          "name": "EMPS",
+          "type": "custom",
+          "factory": "org.apache.calcite.adapter.csv.CsvTableFactory",
+          "operand": {
+            "file": "sales/EMPS.csv.gz",
+            "flavor": "TRANSLATABLE"
+          }
+        }
+      ]
+    }
+  ]
+}

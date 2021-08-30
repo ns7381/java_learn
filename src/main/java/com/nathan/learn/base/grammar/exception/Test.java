@@ -7,18 +7,20 @@ import java.io.IOException;
 
 public class Test {
 
-    public static void main(String[] args) throws MyException {
-        try {
-            throw new IOException("test");
+    public static void main(String[] args) throws MyException, InterruptedException {
+        while (true) {
+            try {
+                throw new IOException("test");
 //            System.out.println("111"); //unreachable expression
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            throw new RuntimeException("test2");
-        } finally {
-            System.out.println("finally");
-        }
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+                throw new RuntimeException("test2");
+            } finally {
+                System.out.println("finally");
+            }
 //        System.out.println("end");//unreachable expression
 //        readFile("xxxx");
+        }
     }
 
     private static void readFile(String filePath) throws MyException {

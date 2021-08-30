@@ -16,6 +16,7 @@ public class HelloWordClient {
         transport.open();
         Request request = new Request().setType(RequestType.SAY_HELLO).setName("nathan2012").setAge(24);
         System.out.println(client.doAction(request));
+        System.out.println(client.doTest(request, ""));
         transport.close();
     }
 }

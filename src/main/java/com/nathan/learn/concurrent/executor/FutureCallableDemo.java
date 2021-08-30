@@ -9,13 +9,15 @@ import java.util.concurrent.*;
  */
 public class FutureCallableDemo {
     public static void main(String[] args) {
-        ExecutorService executorService = Executors.newCachedThreadPool();
+        long currentTimeMillis = System.currentTimeMillis();
+        ExecutorService executorService = Executors.newFixedThreadPool(6);
         
         List<Future<String>> futures = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             futures.add(executorService.submit(new TaskWithResult(i)));
         }
 
+//        executorService.shutdown();
         for (Future<String> future : futures) {
             try {
                 System.out.println(future.get());
@@ -27,6 +29,7 @@ public class FutureCallableDemo {
                 executorService.shutdown();
             }
         }
+        System.out.println(System.currentTimeMillis() - currentTimeMillis);
     }
 }
 
@@ -39,6 +42,7 @@ class TaskWithResult implements Callable<String> {
 
     @Override
     public String call() throws Exception {
+        Thread.sleep(1000);
         return "result of task " + id;
     }
 }

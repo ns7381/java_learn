@@ -33,7 +33,8 @@ public class DynamicProgrammingLearn {
         weight[2] = 4;
         price[2] = 3000;
         weight[3] = 3;
-        price[3] = 2000;*/
+        price[3] = 2000;
+        */
 
         for (int i = 1; i < num + 1; i++) {
             // ****逆序

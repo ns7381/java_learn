@@ -61,6 +61,7 @@ public class JuteDemo {
             return type;
         }
 
+        @Override
         public void serialize(OutputArchive oa, String tag) throws java.io.IOException {
             oa.startRecord(this, tag);
             oa.writeLong(sessionId, "sessionId");
@@ -68,6 +69,7 @@ public class JuteDemo {
             oa.endRecord(this, tag);
         }
 
+        @Override
         public void deserialize(InputArchive ia, String tag) throws java.io.IOException {
             ia.startRecord(tag);
             this.sessionId = ia.readLong("sessionId");

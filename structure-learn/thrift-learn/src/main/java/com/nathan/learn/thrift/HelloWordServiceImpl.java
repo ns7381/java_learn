@@ -19,4 +19,10 @@ public class HelloWordServiceImpl implements HelloWordService.Iface {
         }
         return result;
     }
+
+    @Override
+    public String doTest(Request request, String flag) throws RequestException, TException {
+        System.out.println(request.name + ": " + flag);
+        return flag;
+    }
 }

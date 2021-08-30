@@ -12,9 +12,16 @@ public class CountDownLatchDemo {
 
         for (int i = 1; i <=6 ; i++) {
             new Thread(()->{
-                System.out.println(Thread.currentThread().getName()+" Go out");
+
+
                 countDownLatch.countDown(); // 数量-1
-            },String.valueOf(i)).start();
+                System.out.println(Thread.currentThread().getName()+" Go out");
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                },String.valueOf(i)).start();
         }
 
         countDownLatch.await(); // 等待计数器归零，然后再向下执行

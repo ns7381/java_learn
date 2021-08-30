@@ -1,203 +1,135 @@
 package com.nathan.learn.datastructure.graph;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
-/**
- * 邻接矩阵实现图
- */
-class Graph<T> {
-    // 存储顶点集合
-    private final List<T> vertexList;
-    // 存储图对应的邻结矩阵
-    private final int[][] edges;
-    // 表示边的数目
-    private int numOfEdges;
+public class Graph {
+    static class Vertex {
+        private boolean calculated;
+        private final String name;
+        private int distance;
+        private Vertex prev;
 
-    public Graph(int n) {
-        // 初始化矩阵和vertexList
-        edges = new int[n][n];
-        vertexList = new ArrayList<T>(n);
-        numOfEdges = 0;
-    }
+        public Vertex(String name) {
+            this.calculated = false;
+            this.distance = Integer.MAX_VALUE;
+            this.prev = null;
+            this.name = name;
+        }
 
-    // 插入结点
-    public void insertVertex(T vertex) {
-        vertexList.add(vertex);
-    }
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) {
+                return true;
+            }
+            if (o == null || getClass() != o.getClass()) {
+                return false;
+            }
+            Vertex vertex = (Vertex) o;
+            return Objects.equals(name, vertex.name);
+        }
 
-    /**
-     * 添加边
-     * @param v1     第二个顶点对应的下标
-     * @param v2     第二个顶点对应的下标
-     * @param weight 表示权值，0：不连接；1：连接
-     */
-    public void insertEdge(int v1, int v2, int weight) {
-        edges[v1][v2] = weight;
-        edges[v2][v1] = weight;
-        numOfEdges++;
-    }
-
-    // 返回结点的个数
-    public int getNumOfVertex() {
-        return vertexList.size();
-    }
-
-    // 得到边的数目
-    public int getNumOfEdges() {
-        return numOfEdges;
-    }
-
-    // 返回结点i(下标)对应的数据 0->"A" 1->"B" 2->"C"
-    public T getValueByIndex(int i) {
-        return vertexList.get(i);
-    }
-
-    // 返回v1和v2的权值
-    public int getWeight(int v1, int v2) {
-        return edges[v1][v2];
-    }
-
-    // 显示图对应的矩阵
-    public void showGraph() {
-        for (int[] link : edges) {
-            System.out.println(Arrays.toString(link));
+        @Override
+        public int hashCode() {
+            return Objects.hash(name);
         }
     }
 
-    /**
-     * 得到第一个邻接结点的下标 w
-     * @param index
-     * @return 如果存在就返回对应的下标，否则返回-1
-     */
-    public int getFirstNeighbor(int index) {
-        for (int j = 0; j < vertexList.size(); j++) {
-            if (edges[index][j] > 0) {
-                return j;
+    static class Edge {
+        private final Vertex startVertex;
+        private final Vertex endVertex;
+        private final int weight;
+
+        public Edge(Vertex startVertex, Vertex endVertex, int weight) {
+            this.startVertex = startVertex;
+            this.endVertex = endVertex;
+            this.weight = weight;
+        }
+    }
+
+    private final List<Vertex> vertices;
+
+    private final Map<Vertex, List<Edge>> vertexEdges;
+
+    public Graph(List<Vertex> vertices, Map<Vertex, List<Edge>> vertexEdges) {
+        this.vertices = vertices;
+        this.vertexEdges = vertexEdges;
+    }
+
+    public void initialize(Vertex v) {
+        v.prev = null;
+        v.distance = 0;
+    }
+
+    private void calculate(Vertex v) {
+        if (v == null) {
+            return;
+        }
+        if (vertexEdges.get(v) == null || vertexEdges.get(v).size() == 0) {
+            return;
+        }
+        List<Vertex> nextVertices = new LinkedList<>();
+        for (Edge e : vertexEdges.get(v)) {
+            Vertex next = e.endVertex;
+
+            if (!next.calculated) {
+                next.calculated = true;
+                next.distance = v.distance + e.weight;
+                next.prev = v;
+                nextVertices.add(next);
+            }
+
+            int nowDist = v.distance + e.weight;
+            if (nowDist < next.distance) {
+                next.distance = nowDist;
+                next.prev = v;
             }
         }
-        return -1;
-    }
-
-    // 根据前一个邻接结点的下标来获取下一个邻接结点
-    public int getNextNeighbor(int v1, int v2) {
-        for (int j = v2 + 1; j < vertexList.size(); j++) {
-            if (edges[v1][j] > 0) {
-                return j;
-            }
-        }
-        return -1;
-    }
-
-    // 深度优先遍历算法
-    private void dfs(boolean[] isVisited, int i) {
-        // 首先我们访问该结点,输出
-        System.out.print(getValueByIndex(i) + "->");
-        // 将结点设置为已经访问
-        isVisited[i] = true;
-        // 查找结点i的第一个邻接结点w
-        int w = getFirstNeighbor(i);
-        while (w != -1) {// 说明有
-            if (!isVisited[w]) {
-                dfs(isVisited, w);
-            }
-            // 如果w结点已经被访问过
-            w = getNextNeighbor(i, w);
-        }
-
-    }
-
-    // 对dfs 进行一个重载, 遍历我们所有的结点，并进行 dfs
-    public void dfs() {
-        boolean[] isVisited = new boolean[vertexList.size()];
-        // 遍历所有的结点，进行dfs[回溯]
-        for (int i = 0; i < getNumOfVertex(); i++) {
-            if (!isVisited[i]) {
-                dfs(isVisited, i);
-            }
+        for (Vertex vc : nextVertices) {
+            calculate(vc);
         }
     }
 
-    // 对一个结点进行广度优先遍历的方法
-    private void bfs(boolean[] isVisited, int i) {
-        int u; // 表示队列的头结点对应下标
-        int w; // 邻接结点w
-        // 队列，记录结点访问的顺序
-        LinkedList<Integer> queue = new LinkedList<Integer>();
-        // 访问结点，输出结点信息
-        System.out.print(getValueByIndex(i) + "=>");
-        // 标记为已访问
-        isVisited[i] = true;
-        // 将结点加入队列
-        queue.addLast(i);
 
-        while (!queue.isEmpty()) {// 体现出我们的广度优先
-            // 取出队列的头结点下标
-            u = queue.removeFirst();
-            // 得到第一个邻接结点的下标 w
-            w = getFirstNeighbor(u);
-            while (w != -1) {// 找到
-                // 是否访问过
-                if (!isVisited[w]) {
-                    System.out.print(getValueByIndex(w) + "=>");
-                    // 标记已经访问
-                    isVisited[w] = true;
-                    // 入队
-                    queue.addLast(w);
-                }
-                // 以u为前驱点，找w后面的下一个邻结点
-                w = getNextNeighbor(u, w);
-            }
+    public List<String> shortestPath(Vertex start, Vertex dest) {
+        initialize(start);
+        calculate(start);
+        List<String> shortestPath = new ArrayList<>();
+        while ((dest.prev != null) && (!dest.equals(start))) {
+            shortestPath.add(0, dest.prev.name);
+            dest = dest.prev;
         }
-
+        return shortestPath;
     }
 
-    // 遍历所有的结点，都进行广度优先搜索
-    public void bfs() {
-        boolean[] isVisited = new boolean[vertexList.size()];
-        for (int i = 0; i < getNumOfVertex(); i++) {
-            if (!isVisited[i]) {
-                bfs(isVisited, i);
-            }
-        }
+    public List<String> getShortestInvocationChain(Map<String, List<String>> serviceInvocations,
+                                                   Map<String, Integer> invocationsTime,
+                                                   String start, String end) {
+        Map<String, Vertex> vertexMap = invocationsTime.keySet()
+                .stream()
+                .map(Vertex::new)
+                .collect(Collectors.toMap(v -> v.name, v -> v));
+        Map<Vertex, List<Edge>> vertexEdges = new HashMap<>();
+        serviceInvocations.forEach((from, toList) -> {
+            List<Edge> edges = new ArrayList<>();
+            Vertex startVertex = vertexMap.get(from);
+            toList.forEach(to -> {
+                edges.add(new Edge(startVertex, vertexMap.get(to), invocationsTime.get(to)));
+            });
+            vertexEdges.put(startVertex, edges);
+        });
+        Graph graph = new Graph(new ArrayList(vertexMap.keySet()), vertexEdges);
+
+        return graph.shortestPath(vertexMap.get(start), vertexMap.get(end));
     }
 
-    public static void main(String[] args) {
-
-        // 测试一把图是否创建ok
-        String[] vertexes = {"1", "2", "3", "4", "5", "6", "7", "8"};
-        int n = vertexes.length; // 结点的个数
-
-        // 创建图对象
-        Graph<String> graph = new Graph<>(n);
-        // 循环的添加顶点
-        for (String vertex : vertexes) {
-            graph.insertVertex(vertex);
-        }
-
-        //更新边的关系
-        graph.insertEdge(0, 1, 1);
-        graph.insertEdge(0, 2, 1);
-        graph.insertEdge(1, 3, 1);
-        graph.insertEdge(1, 4, 1);
-        graph.insertEdge(3, 7, 1);
-        graph.insertEdge(4, 7, 1);
-        graph.insertEdge(2, 5, 1);
-        graph.insertEdge(2, 6, 1);
-        graph.insertEdge(5, 6, 1);
-
-        //显示一把邻结矩阵
-        graph.showGraph();
-
-        //测试一把，我们的dfs遍历是否ok
-        System.out.println("深度遍历");
-        graph.dfs(); // [1->2->4->8->5->3->6->7]
-        System.out.println();
-        System.out.println("广度优先!");
-        graph.bfs(); // [1->2->3->4->5->6->7->8]
-
-    }
 }
+
+
+
 

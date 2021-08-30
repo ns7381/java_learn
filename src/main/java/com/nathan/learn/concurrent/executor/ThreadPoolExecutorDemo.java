@@ -2,10 +2,14 @@ package com.nathan.learn.concurrent.executor;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingDeque;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 
-// Executors 工具类、3大方法\7大参数
+// Executors 工具类、3大方法 7大参数
 
 /**
  * new ThreadPoolExecutor.AbortPolicy() // 银行满了，还有人进来，不处理这个人的，抛出异常
@@ -14,15 +18,7 @@ import java.util.concurrent.*;
  * new ThreadPoolExecutor.DiscardOldestPolicy() //队列满了，尝试去和最早的竞争，也不会抛出异常！
  */
 public class ThreadPoolExecutorDemo {
-    public static void main(String[] args) {
-        // 自定义线程池！工作 ThreadPoolExecutor
-
-        // 最大线程到底该如何定义
-        // 1、CPU 密集型，几核，就是几，可以保持CPu的效率最高！
-        // 2、IO  密集型   > 判断你程序中十分耗IO的线程，
-        // 程序   15个大型任务  io十分占用资源！
-
-        // 获取CPU的核数
+    public static void main(String[] args) throws InterruptedException {
         System.out.println(Runtime.getRuntime().availableProcessors());
 
         List list = new ArrayList();
@@ -34,14 +30,17 @@ public class ThreadPoolExecutorDemo {
                 TimeUnit.SECONDS,
                 new LinkedBlockingDeque<>(3),
                 Executors.defaultThreadFactory(),
-                new ThreadPoolExecutor.DiscardOldestPolicy());  //队列满了，尝试去和最早的竞争，也不会抛出异常！
+                new ThreadPoolExecutor.DiscardOldestPolicy());
         try {
-            // 最大承载：Deque + max
-            // 超过 RejectedExecutionException
             for (int i = 1; i <= 9; i++) {
                 // 使用了线程池之后，使用线程池来创建线程
-                threadPool.execute(()->{
-                    System.out.println(Thread.currentThread().getName()+" ok");
+                threadPool.execute(() -> {
+                    try {
+                        Thread.sleep(5000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    System.out.println(Thread.currentThread().getName() + " ok");
                 });
             }
 
@@ -49,7 +48,15 @@ public class ThreadPoolExecutorDemo {
             e.printStackTrace();
         } finally {
             // 线程池用完，程序结束，关闭线程池
+            System.out.println("Thread pool start shutdown");
             threadPool.shutdown();
+//            threadPool.awaitTermination(1, TimeUnit.DAYS);
+//            System.out.println("Thread pool shutdown finish");
+            while (!threadPool.isTerminated()) {
+                Thread.sleep(1000);
+            }
+            System.out.println("Thread pool shutdown finish");
+
         }
 
     }

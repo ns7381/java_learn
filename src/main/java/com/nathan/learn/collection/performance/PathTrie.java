@@ -4,9 +4,7 @@ import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.ArrayDeque;
 import java.util.Collection;
-import java.util.Deque;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -88,6 +86,7 @@ public class PathTrie {
         void setProperty(String prop) {
             this.property = prop;
         }
+
         String getProperty() {
             return this.property;
         }
@@ -335,6 +334,7 @@ public class PathTrie {
         pathTrie.addPath("/test/market1", "ds6");
         pathTrie.addPath("/test", "ds7");
         pathTrie.addPath("/ceshi", "ds8");
+//        pathTrie.deletePath("/test/dd_edw/odm");
         System.out.println(pathTrie.findMaxPrefix("/test/dd_edw/odm/t4"));
     }
 
