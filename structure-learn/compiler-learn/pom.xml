@@ -12,6 +12,13 @@
 
     <artifactId>compiler-learn</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.6</version>
+        </dependency>
+    </dependencies>
     <build>
         <plugins>
             <plugin>
@@ -28,7 +35,7 @@
                         <configuration>
                             <sourceDirectory>${project.basedir}/src/main/java/com/ns/learn/compiler/javacc/</sourceDirectory>
                             <includes>
-                                <include>addr.jj</include>
+                                <include>ExpressParser.jj</include>
                             </includes>
                             <lookAhead>2</lookAhead>
                             <isStatic>false</isStatic>

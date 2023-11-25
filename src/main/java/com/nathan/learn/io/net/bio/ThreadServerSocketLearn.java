@@ -29,7 +29,6 @@ public class ThreadServerSocketLearn {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-
                 }).start();
             }
         } catch (IOException e) {

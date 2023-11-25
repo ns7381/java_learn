@@ -10,15 +10,12 @@ import java.nio.ByteBuffer;
 
 public class KryoSerializer implements Serializer {
 
-    private static final ThreadLocal<Kryo> KRYO_LOCAL = new ThreadLocal<Kryo>() {
-        @Override
-        protected Kryo initialValue() {
-            Kryo kryo = new Kryo();
-            kryo.setReferences(true);// 支持循环引用
-            kryo.setRegistrationRequired(false);// 关闭注册行为
-            return kryo;
-        }
-    };
+    private static final ThreadLocal<Kryo> KRYO_LOCAL = ThreadLocal.withInitial(() -> {
+        Kryo kryo = new Kryo();
+        kryo.setReferences(true);// 支持循环引用
+        kryo.setRegistrationRequired(false);// 关闭注册行为
+        return kryo;
+    });
 
     @Override
     public <T> ByteBuffer serialize(T t) {

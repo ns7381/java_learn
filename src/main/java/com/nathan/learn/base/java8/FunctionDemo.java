@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class FunctionDemo {
-    @FunctionalInterface
+//    @FunctionalInterface
     public interface HelloService {
 
         void sayHello(String username);
@@ -44,7 +44,7 @@ public class FunctionDemo {
     }
     public static void main(String[] args) {
         FunctionDemo functionDemo = new FunctionDemo("test");
-        functionDemo.say(username -> System.out.println(username));
+        functionDemo.say(System.out::println);
 
         List<Integer> integers = Arrays.asList(3, 9, 7, 0, 10, 20);
         integers.forEach(i -> {

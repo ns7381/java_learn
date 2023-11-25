@@ -1,11 +1,17 @@
 package com.nathan.learn.calcite;
 
 import com.nathan.learn.calcite.mock.HrSchema;
+import org.apache.calcite.adapter.enumerable.JavaRelImplementor;
+import org.apache.calcite.adapter.java.JavaTypeFactory;
 import org.apache.calcite.adapter.java.ReflectiveSchema;
 import org.apache.calcite.adapter.jdbc.JdbcSchema;
 import org.apache.calcite.jdbc.CalciteConnection;
+import org.apache.calcite.jdbc.JavaTypeFactoryImpl;
+import org.apache.calcite.rel.RelNode;
 import org.apache.calcite.schema.Schema;
 import org.apache.calcite.schema.SchemaPlus;
+import org.apache.calcite.sql.validate.SqlConformance;
+import org.apache.calcite.tools.RelBuilder;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.junit.Test;
 

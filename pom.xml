@@ -18,10 +18,10 @@
         <module>structure-learn/metrics-learn</module>
         <module>structure-learn/mybatis-learn</module>
         <module>structure-learn/mybatis-plus-learn</module>
-<!--        <module>structure-learn/netty-learn</module>-->
+        <module>structure-learn/netty-learn</module>
         <module>structure-learn/spi-learn</module>
         <module>structure-learn/spring-learn</module>
-        <module>structure-learn/thrift-learn</module>
+<!--        <module>structure-learn/thrift-learn</module>-->
         <module>structure-learn/rmi-learn</module>
         <module>structure-learn/compiler-learn</module>
         <module>structure-learn/cache-learn</module>
@@ -30,6 +30,9 @@
         <module>structure-learn/antlr-learn/antlr4-learn</module>
         <module>structure-learn/antlr-learn/hivesql-learn</module>
         <module>structure-learn/log4j2-learn</module>
+        <module>structure-learn/janino-learn</module>
+        <module>structure-learn/javacc-learn</module>
+        <module>structure-learn/workflow-learn</module>
     </modules>
 
     <dependencies>
@@ -110,10 +113,43 @@
             <version>2.6</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>io.dropwizard.metrics</groupId>
+            <artifactId>metrics-core</artifactId>
+            <version>3.1.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>28.2-jre</version>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>net.alchim31.maven</groupId>
+                <artifactId>scala-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>scala-compile-first</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>scala-test-compile</id>
+                        <phase>process-test-resources</phase>
+                        <goals>
+                            <goal>testCompile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -121,16 +157,11 @@
                     <source>8</source>
                     <target>8</target>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.scala-tools</groupId>
-                <artifactId>maven-scala-plugin</artifactId>
-                <version>2.15.2</version>
                 <executions>
                     <execution>
+                        <phase>compile</phase>
                         <goals>
                             <goal>compile</goal>
-                            <goal>testCompile</goal>
                         </goals>
                     </execution>
                 </executions>

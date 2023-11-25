@@ -3,56 +3,19 @@ package com.nathan.learn;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLClassLoader;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Test1 {
     private volatile AtomicInteger val = new AtomicInteger(0);
     private static final ThreadLocal<String> ROUTE_KEY = new ThreadLocal<>();
     private static boolean flag;
-
-    public static void main(String[] args) throws InterruptedException {
-        Test1 test = new Test1();
-        List<Thread> threads = new ArrayList<>();
-        System.out.println(" ".indexOf(" "));
-        for (int i = 0; i < 10; i++) {
-            Thread thread = new Thread(() -> {
-                int j = 0;
-                while (j < 1000) {
-                    test.val.incrementAndGet();
-                    try {
-                        Thread.sleep(10);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    j++;
-                }
-            });
-            threads.add(thread);
-            thread.start();
-        }
-        for (Thread thread : threads) {
-            thread.join();
-        }
-        System.out.println(test.val.get());
-
-
-        int val = 10;
-        long time = System.currentTimeMillis();
-        assert time / 2 + 3 == 10;
-        System.out.println(val);
-
-
-        Test1 test1 = new Test1();
-
-    }
 
     public void setVal(AtomicInteger val) {
 //        this.flag
@@ -62,8 +25,11 @@ public class Test1 {
     public void test() {
         int val = 10;
         long time = System.currentTimeMillis();
-        assert time / 2 + 3 == 10;
+//        assert time / 2 + 3 == 10;
         System.out.println(val);
+
+        System.out.println(100 ^ 99);
+        System.out.println(7 & (~7 +1) );
     }
 
     @Test
@@ -145,9 +111,9 @@ public class Test1 {
 
     @Test
     public void testBase64d() {
-//        String str2 = Base64.encodeBase64String("0sbGZyejozOjEsaHR5ZDoyOjAsMTYyMTUwOTg2NDkyMg==".getBytes());
+        String str2 = new String(Base64.getDecoder().decode("H6bKs4IPQIdxUSmwyym37yM9oMjmGgBrsX1JbzoMRj/GhmYaRu0ZjLajzgh6SCNG4cCApZkFtu63fKTcfAekwbyT14Mbrors4NJ2chb/s0uGfXJbebo/MuwBBfPUcX8NKneyYcfypbJ4d5j9m/jbwJvTr3isZr3p/Z2dRyFpIjs="));
 //        String str3 = Base64.encodeBase64String("bajie".getBytes());
-//        System.out.println(str2);
+        System.out.println(str2);
 //        System.out.println(str3);
     }
 
@@ -232,6 +198,120 @@ public class Test1 {
                 .replaceAll("'", "")
                 .replaceAll("\"", ""));
         System.out.println(new String("立即添加".getBytes(),"iso8859-1"));
+    }
+
+
+    @Test
+    public void testBasic() {
+        String a = "123";
+        String b = "303";
+        char ca = '0';
+        char cb = '2';
+        System.out.println(a.charAt(0));
+        int x = ca - cb;
+        System.out.println(x);
+    }
+
+    @Test
+    public void testBitCompute() {
+        int a = 24;
+        System.out.println(24/2);
+        System.out.println(24%2);
+        System.out.println(24>>1);
+        System.out.println(24<<1);
+        System.out.println(24&1);
+        System.out.println(12&1);
+        System.out.println(6&1);
+        System.out.println(3&1);
+        System.out.println(1&1);
+        System.out.println(0>>1);
+        System.out.println(0<<1);
+        System.out.println(-3>>1);
+        System.out.println(-3>>>1);
+        System.out.println(3&4);
+        System.out.println(1^2);
+        System.out.println((1&2)<<1);
+    }
+
+    @Test
+    public void testNumber() {
+        Float f = 2.68F;
+        System.out.println(f.doubleValue());
+        System.out.println(Double.valueOf(f.toString()));
+    }
+
+    @Test
+    public void testScala() {
+    }
+
+    @Test
+    public void testList1() {
+        ArrayList<Object> objects = new ArrayList<>();
+        objects.add(1);
+        objects.add(123);
+
+        ArrayList<Object> objects2 = new ArrayList<>();
+        objects2.add(1);
+        objects2.add(123);
+
+        ArrayList<Object> objects3 = new ArrayList<>(objects);
+        objects.removeAll(objects2);
+
+        ArrayList<Object> objects4 = objects;
+
+        System.out.println(objects3.size());
+        System.out.println(objects4.size());
+    }
+
+    @Test
+    public void testSort() {
+        List<String> list = new ArrayList<String>();
+        list.add("sdsd");
+        list.add("asdf");
+        List<String> sList = new ArrayList<String>();
+        sList.add("tab4_bigdecimal_var01");
+        sList.add("tab4_boolean_var01");
+        sList.add("tab4_date_var01");
+        sList.add("tab4_double_var01");
+        sList.add("tab4_integer_var01");
+        sList.add("tab4_long_var01");
+        sList.add("tab4_string_var01");
+        sList.sort((f1, f2) -> list.indexOf(f2) - list.indexOf(f1));    //sorts array list
+        for(String str: sList)
+            System.out.print(" "+str);
+    }
+
+
+    @Test
+    public void testCP() throws IOException {
+        ClassLoader cl = ClassLoader.getSystemClassLoader();
+        if (cl instanceof URLClassLoader) {
+            URL[] urls = ((URLClassLoader) cl).getURLs();
+            System.out.println("Classpath: " + Arrays.toString(Arrays.stream(urls).map(URL::getFile).toArray()));
+        }
+
+
+        URL zipUrl = this.getClass().getResource("wjjtest0104_1.0.020230110153820_425547.zip");
+        URL entryUrl = new URL("jar:" + zipUrl + "!/test.txt");
+        InputStream is = entryUrl.openStream();
+    }
+
+    public static void main(String[] args) throws MalformedURLException {
+        ClassLoader cl = ClassLoader.getSystemClassLoader();
+        if (cl instanceof URLClassLoader) {
+            URL[] urls = ((URLClassLoader) cl).getURLs();
+            System.out.println("Classpath: " + Arrays.toString(Arrays.stream(urls).map(URL::getFile).toArray()));
+        }
+
+
+        URL zipUrl = Test1.class.getResource("wjjtest0104_1.0.020230110153820_425547.zip");
+        URL entryUrl = new URL("jar:" + zipUrl + "!/test.txt");
+    }
+
+
+    @Test
+    public void testnull() {
+        System.out.println(null == null);
     }
 
 }

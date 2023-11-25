@@ -9,7 +9,7 @@ public enum  OzWitch {
     EAST("e is west");
 
     private String description;
-    private OzWitch(String s) {
+    OzWitch(String s) {
         this.description = s;
     }
 

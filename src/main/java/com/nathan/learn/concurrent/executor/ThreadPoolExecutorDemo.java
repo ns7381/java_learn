@@ -19,6 +19,16 @@ import java.util.concurrent.TimeUnit;
  */
 public class ThreadPoolExecutorDemo {
     public static void main(String[] args) throws InterruptedException {
+        new Thread(()->{
+            try {
+                test();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }).start();
+    }
+
+    public static void test() throws InterruptedException {
         System.out.println(Runtime.getRuntime().availableProcessors());
 
         List list = new ArrayList();

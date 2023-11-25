@@ -27,7 +27,8 @@ public class Child extends Parent{
 //        new Parent().testA();
         Parent child = new Child();
         child.testA();
-        testC();
-        ((Child) child).testB();
+//        child.testA();
+//        testC();
+//        ((Child) child).testB();
     }
 }

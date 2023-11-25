@@ -17,4 +17,14 @@ public class InitOrder {
         System.out.println(s);
         return 12;
     }
+
+    public void test(Parent parent) {
+        System.out.println("parent: ----------");
+        System.out.println(parent.getClass());
+    }
+
+    public void test(Child child) {
+        System.out.println("child: ----------");
+        System.out.println(child.getClass());
+    }
 }
