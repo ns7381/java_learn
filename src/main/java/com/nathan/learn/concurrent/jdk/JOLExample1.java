@@ -66,4 +66,7 @@ public class JOLExample1 {
             out.println(ClassLayout.parseInstance(a).toPrintable());
         }
     }
+
+    private static class A {
+    }
 }

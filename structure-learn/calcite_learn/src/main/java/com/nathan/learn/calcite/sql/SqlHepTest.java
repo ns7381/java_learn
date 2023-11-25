@@ -36,8 +36,10 @@ import java.util.Properties;
 public class SqlHepTest {
   private static final Logger LOGGER = LoggerFactory.getLogger(SqlHepTest.class);
   private static final String SQL
-      = "select u.id as user_id, u.name as user_name, j.company as user_company, u.age as user_age from users u"
-      + " join jobs j on u.id=j.id where u.age > 30 and j.id>10 order by user_id";
+      = "select u.id as user_id, u.name as user_name, j.company as user_company, u.age as user_age, \n" +
+          "CASE WHEN u.age = 'A' THEN CASE WHEN u.name = 'X' THEN 'Y' ELSE 'Z' END END " +
+          "from users u join jobs j on u.id=j.id " +
+          "where u.age > 30 and j.id>10 order by user_id";
 
 
   public static void main(String[] args) {

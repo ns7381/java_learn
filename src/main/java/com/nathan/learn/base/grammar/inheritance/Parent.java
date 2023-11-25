@@ -26,6 +26,9 @@ public class Parent {
     }
 
     private void testB() {
+        System.out.println(this.getClass());
+        InitOrder initOrder = new InitOrder();
+        initOrder.test(this);
         System.out.println("Parent testB.");
     }
 

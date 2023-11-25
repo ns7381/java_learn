@@ -12,6 +12,7 @@ public abstract class RpcEnv {
 
     protected abstract RpcEndpointRef endpointRef(RpcEndpoint endpoint);
 
+    public abstract RpcAddress address();
 }
 
 

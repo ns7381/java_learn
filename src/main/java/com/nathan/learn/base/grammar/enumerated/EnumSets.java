@@ -14,5 +14,7 @@ public class EnumSets {
         System.out.println(languages);
         languages = EnumSet.allOf(Language.class);
         System.out.println(languages);
+        System.out.println(languages.contains(Language.CN));
+        Language.valueOf("xxx");
     }
 }
